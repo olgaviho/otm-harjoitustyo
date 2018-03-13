@@ -1,0 +1,121 @@
+commit 386b94f199fb2a13b035de4176ced437864c0718
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:35:08 2018 +0200
+
+    muutoksia
+
+ tiedostoja/2      | 0
+ tiedostoja/3      | 0
+ tiedostoja/file   | 0
+ tiedostoja/file1  | 0
+ tiedostoja/file22 | 0
+ tiedostoja/file3  | 0
+ 6 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 95a369328f0c72902c885be65034343ef7c15532
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:30:46 2018 +0200
+
+    uusi kansio
+
+ kolmas.txt       | 1 +
+ tiedostoja/2     | 0
+ tiedostoja/3     | 0
+ tiedostoja/file  | 0
+ tiedostoja/file1 | 0
+ 5 files changed, 1 insertion(+)
+
+commit f0b8cd02b981216d77e52a54f11df530c1889d4f
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:18:03 2018 +0200
+
+    jopas jotakin
+
+ eka.txt    | 3 ++-
+ kolmas.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 6867d89a855c474315c1a010827a8bae4386a6e2
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:13:48 2018 +0200
+
+    uudelleennimeaminen
+
+ eka.txt      | 6 ++++++
+ tiedosto.txt | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 300d33ff59612eaa75b4b59ff0c84253a457148c
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:12:26 2018 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 94bf4aa021a15dcac46551b16797fb7ca08d0513
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:05:57 2018 +0200
+
+    uutta tekstiä
+
+ tiedosto.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+commit 47f904dce14e559255902553932cdfbe64fe3026
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 13:04:15 2018 +0200
+
+    lisää tekstiä
+
+ tiedosto.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 98ab373ce307d5473734ac0cd8c59c384ca81801
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 12:57:48 2018 +0200
+
+    uusi kansio
+
+ stuff/neljas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 02e8a72db1f678c588410423cafd4d50de37f8c6
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 12:54:44 2018 +0200
+
+    kaksi muutosta
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit f27bc97972416eb587aad260b19dba0a973dffb2
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 12:53:05 2018 +0200
+
+    lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 6a5e2c55a9d2225636d67f6f87975c58ecf4b5e6
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 12:48:50 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit e16d0da110b63e454b5410d8e1dc8a8905eb5034
+Author: Olga Viholainen <olga.viholainen@helsinki.fi>
+Date:   Tue Mar 13 12:45:03 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
