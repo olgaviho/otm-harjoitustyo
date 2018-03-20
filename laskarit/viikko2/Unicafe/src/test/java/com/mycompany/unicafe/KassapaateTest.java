@@ -1,10 +1,7 @@
 package com.mycompany.unicafe;
 
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -206,6 +203,12 @@ public class KassapaateTest {
     public void lataaRahaaKortillaKasvattaaKortinRahamaaraa() {
         kassa.lataaRahaaKortille(kortti, 500);
         assertEquals("saldo: 10.0",kortti.toString());
+    }
+    
+    @Test
+    public void epaonnistunutlataaRahaaKortilleEiTeeMitaan() {
+        kassa.lataaRahaaKortille(kortti, -500);
+        assertEquals("saldo: 5.0",kortti.toString());
     }
             
     
