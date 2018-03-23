@@ -12,4 +12,4 @@
 
 ## Week 2 <h3>
 
-[alustava maarittelydokumentti] (https://github.com/olgaviho/otm-harjoitustyo/blob/master/laskarit/viikko2/maarittelydokumentti.md)
+[alustava maarittelydokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/maarittelydokumentti.md)
