@@ -1,4 +1,4 @@
-Maarittelydokumentti
+## Maarittelydokumentti <h1>
 
 Sovellus opintojen seuraamiseen
 
