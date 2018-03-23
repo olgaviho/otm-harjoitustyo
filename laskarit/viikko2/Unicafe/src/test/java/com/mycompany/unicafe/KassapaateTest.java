@@ -209,8 +209,8 @@ public class KassapaateTest {
     public void epaonnistunutlataaRahaaKortilleEiTeeMitaan() {
         kassa.lataaRahaaKortille(kortti, -500);
         assertEquals("saldo: 5.0",kortti.toString());
-    }
-            
+    }    
+    
     
     
 }
