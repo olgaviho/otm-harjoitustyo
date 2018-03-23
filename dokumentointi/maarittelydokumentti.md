@@ -2,7 +2,7 @@
 
 ## Sovellus opintojen seuraamiseen <h2>
 
-Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
+Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa. Käyttöliittymäluonnos löytyy kansiosta "dokumentointi".
 
 ## Käyttäjät <h3>
 
