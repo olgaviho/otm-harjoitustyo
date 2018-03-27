@@ -67,4 +67,8 @@ public class FileUserDao implements UserDao {
     
     
      }
+    
+    /*public User findUsername(string username) throws Exception {
+    *
+    */
 }

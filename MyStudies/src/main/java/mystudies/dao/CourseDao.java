@@ -12,4 +12,7 @@ public interface CourseDao {
     
     ArrayList<Course> getAll();
     
+    
+    Course createCourse(Course course) throws Exception;
+    
 }
