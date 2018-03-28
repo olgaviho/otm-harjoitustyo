@@ -6,11 +6,11 @@ package mystudies.dao;
  * @author olgaviho
  */
 import mystudies.domain.Course;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface CourseDao {
     
-    ArrayList<Course> getAll();
+    List<Course> getAll();
     
     
     Course createCourse(Course course) throws Exception;

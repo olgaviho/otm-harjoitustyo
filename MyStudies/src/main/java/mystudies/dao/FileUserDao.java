@@ -12,6 +12,7 @@ import mystudies.domain.Course;
 import mystudies.domain.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * tallentaa käyttäjätiedot tiedostoon
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class FileUserDao implements UserDao {
     
-        private ArrayList<User> users;
+        private List<User> users;
         private String filename;
         
         
@@ -27,26 +28,11 @@ public class FileUserDao implements UserDao {
         public FileUserDao(String filename) throws Exception {
             
         users = new ArrayList<>();
-        this.filename = filename;
-        try {
-            Scanner scanner = new Scanner(new File(filename));
-            while (scanner.hasNextLine()) {
-                String[] parts = scanner.nextLine().split(",");
-               
-                User newUser = new User(parts[0], parts[1]);
-                users.add(newUser);
-            }
-        } catch (FileNotFoundException e) {
-            
-            FileWriter filewriter = new FileWriter(new File(filename));
-            filewriter.close();
-        }
+        this.filename = filename;     
         
-}   
-    
-    
+}             
     @Override
-    public ArrayList<User> getAll() {
+    public List<User> getAll() {
          return users;
     }
     
@@ -54,21 +40,23 @@ public class FileUserDao implements UserDao {
     private void save() throws Exception {
         try (FileWriter filewriter = new FileWriter(new File(filename))) {
             for (User user : users) {
-                filewriter.write(user.getUsername() + "," + user.getName() + "\n");
+                filewriter.write(user.getUsername() + ";" + user.getName() + "\n");
             }
         } 
 }
     
+    @Override
     public User createUser(User newUser) throws Exception {
         users.add(newUser);
         save();
         return newUser;
 
-    
-    
      }
+
+    @Override
+    public User findUsername(String username) {
+    return users.stream().filter(user->user.getUsername().equals(username)).findFirst().orElse(null);   
+        
+    }
     
-    /*public User findUsername(string username) throws Exception {
-    *
-    */
 }

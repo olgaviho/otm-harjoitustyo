@@ -12,11 +12,12 @@ import java.io.File;
 import mystudies.domain.Course;
 import mystudies.domain.User;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class FileCourseDao implements CourseDao {
     
-    public ArrayList<Course> courses;
+    public List<Course> courses;
     private String file;
     
     public FileCourseDao(String file, UserDao users) throws Exception {
@@ -57,7 +58,7 @@ public class FileCourseDao implements CourseDao {
     }
     
     @Override
-    public ArrayList<Course> getAll() {
+    public List<Course> getAll() {
         return courses;
 }
     

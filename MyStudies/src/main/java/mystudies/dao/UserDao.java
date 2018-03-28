@@ -7,11 +7,15 @@ package mystudies.dao;
  * 
  */
 import mystudies.domain.User;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface UserDao {
     
-    ArrayList<User> getAll();
+    List<User> getAll();
+    
+    User createUser(User user) throws Exception;
+    
+    User findUsername(String username);
 
     
 }
