@@ -27,8 +27,8 @@ public class FileUserDao implements UserDao {
         
         public FileUserDao(String filename) throws Exception {
             
-        users = new ArrayList<>();
-        this.filename = filename;     
+            users = new ArrayList<>();
+            this.filename = filename;     
         
 }             
     @Override

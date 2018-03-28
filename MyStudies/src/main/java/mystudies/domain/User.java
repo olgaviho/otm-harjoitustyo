@@ -4,6 +4,7 @@ package mystudies.domain;
 /**
 * käyttäjää edustava luokka
  */
+
 public class User {
     private String name;
     private String username;

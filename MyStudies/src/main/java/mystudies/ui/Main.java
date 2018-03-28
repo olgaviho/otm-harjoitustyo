@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.Scanner;
 import mystudies.domain.CourseService;
-import mystudies.domain.Course;
 
 import mystudies.dao.FileCourseDao;
 import mystudies.dao.FileUserDao;

@@ -2,14 +2,17 @@
 package mystudies.domain;
 
 /**
- * sovelluslogiikka luokka
+ * sovelluslogiikkaluokka
  * @author olgaviho
  * 
  */
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 import mystudies.dao.CourseDao;
 import mystudies.dao.UserDao;
 
@@ -21,56 +24,57 @@ public class CourseService {
     private User loggedIn;
     private Scanner reader;
     private Map<String, String> commands;
+    private boolean logged;
     
     public CourseService(CourseDao courseDao, UserDao userDao, Scanner reader) {
         this.userDao = userDao;
         this.courseDao = courseDao;
         this.reader = reader;
+        this.logged = false;
+        
         commands = new TreeMap<>();
         
-        commands.put("x", "x lopeta");
+        commands.put("x", "x quit");
         commands.put("1", "1 ");
         commands.put("2", "2 ");
         
         
     }
-    
-    /*
-    *    public boolean login(String username) {
-    *    User user = userDao.findUsername(username);
-    *    if (user == null) {
-    *        return false;
-    *    }
-    *
-    *
-    *    loggedIn = user;
-    *    
-    *    return true;
-    */    
+       
         
-
-    public void logout() {
-        loggedIn = null;  
-     } 
-    
     public User getLoggedUser() {
         return loggedIn;
     }   
     
-    public boolean createCourse(String name, String content, int credits) {
-        Course course= new Course(name, content, credits ,loggedIn);
-        try {   
+    public boolean createCourse() {
+        
+        
+        System.out.print("name: ");
+        String name = reader.nextLine(); 
+        System.out.print("description: ");
+        String description = reader.nextLine(); 
+        System.out.print("credits: ");
+        int credits = Integer.parseInt(reader.nextLine()); 
+        
+        
+        Course course = new Course(name, description, credits, loggedIn);
+        try {
             courseDao.createCourse(course);
-        } catch (Exception e) {
+        } catch(Exception e) {
             return false;
         }
+
         return true;
+           
+      
 }
     
     
     public void start() {
         System.out.println("My Studies: Course Service");
         printInstructions();
+        
+      
         
         while (true) {
             System.out.println();
@@ -89,33 +93,55 @@ public class CourseService {
                 
             } else if (command.equals("2")) {
                 logIn();
-            
- 
+                printInstructions();
+                
+
             }
-        }
+        
+        } 
     }
     
-    /*
-    *public ArrayList<Course> getCourses() {
-    *    if (loggedIn == null) {
-    *        return new ArrayList<>();
-    *    }
-    *      
-    *    return CourseDao.getAll()
-    *            .stream()
-    *            .filter(t-> t.getUser().equals(loggedIn))
-    *            .collect(Collectors.toList());
-    */       
+    public List<Course> getCourses() {
+        if (loggedIn == null) {
+            return new ArrayList<>();
+        }
+        
+        List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
+        
+        return courses;
+          
+    }
+    
+    
+    
+    public void yourCourses() {
+        printInstructions2();
+        
+        while (true) {
+            System.out.print("command: ");
+            
+            String command = reader.nextLine();
 
+            if (!commands.keySet().contains(command)) {
+                printInstructions2();
+                
+            }
+ 
+            if (command.equals("x")) {
+                break;
+            } else if (command.equals("1")) {
+                System.out.println("create a course");
+                createCourse();
+                
+                
+            } else if (command.equals("2")) {
+                System.out.println("get courses");
+                System.out.println(getCourses());
+          
+            }
     
-    
-    /*
-    *    public boolean login(String username) {
-    *    User user = userDao.findUsername(username);           
-    *    return true;
-    * 
-    *    ei toimi, koska findUsername ei toimi
-    */
+        }
+}
     
     public boolean createUser()  {   
         System.out.print("name: ");
@@ -138,9 +164,14 @@ public class CourseService {
     
     public void printInstructions() {
         
-        System.out.println("commends:  \n 1. add new user \n 2. log in \n x. quit");
+        System.out.println("commands:  \n 1. add new user \n 2. log in \n x. quit");
         
         
+    }
+    
+    public void printInstructions2() {
+        
+        System.out.println("commands:  \n 1. add new course \n 2. get your courses \n x. log out");
     }
     
     public boolean logIn()  {   
@@ -158,9 +189,18 @@ public class CourseService {
             System.out.println("error");
         } else {
             System.out.println("Welcome " + loggedIn.getName());
+            
+            yourCourses();
+            
+            loggedIn = null;
+            
         }
         
         return true;
-}
+    }
+    
+    
+    
+    
 }
 
