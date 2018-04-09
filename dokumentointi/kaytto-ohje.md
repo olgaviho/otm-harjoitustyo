@@ -9,22 +9,22 @@ Sovellus olettaa että sen käynnistyshakemistossa on konfiguraatiotiedosto conf
 userFile=users.txt
 courseFile=courses.txt
 
-## Uuden käyttäjän luominen <h2>
+## Uuden käyttäjän luominen <h3>
 
 Uuden käyttäjän voi luoda valitsemalla aloituksessa luvun 1 ja sen jälkeen syöttämällä nimen ja käyttäjänimen.
 
-## Kirjautuminen <h2>
+## Kirjautuminen <h4>
 
 Sovellukseen voi kirjautua sisään valitsemalla aloituksessa luvun 2 ja syöttämällä käyttäjänimensä.
 
-## Uuden kurssin luominen <h2>
+## Uuden kurssin luominen <h5>
 
 Uuden kurssin voi luoda valitsemalla kirjauduttuaan luvun 1 ja syöttmällä kurssin nimen, kuvauksen ja opintopistemäärän. 
 
-## Omien kurssitieojen katseleminen <h2> 
+## Omien kurssitieojen katseleminen <h6> 
 
 Omia kurssitietojaan voi katsella valitsemalla kirjauduttuaan luvun 2.
 
-## Sovelluksen sammuttaminen <h2> 
+## Sovelluksen sammuttaminen <h7> 
 
 Sovelluksesta voi kirjautua ulos valitsemalla merkin x kirjauduttuaan sekä aloituksessa.
