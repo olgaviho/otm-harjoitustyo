@@ -1,6 +1,6 @@
 # MyCourses<h1>
 
-Lyhyt kuvaus sovelluksesta
+Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
 ## Dokumentaatio<h2>
 
