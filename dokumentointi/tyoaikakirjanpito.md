@@ -5,3 +5,4 @@ Päivä | Aika | Mitä tein
 22.3. | 2h | Loin määrittelydokumentin ja käyttöliittymäluonnoksen
 27.3. | 2,5 h | Loin tarvittavia luokkia sovellukseeni
 28.3. | 3,5 h | Loin main luokan ja sain sisäänkirjautumisen, uuden käyttäjän luonnin ja kurssien luonnin toimimaan
+9.4. | 2,5 h | lisäsin koodiin exceptioneita ja päivitin readme tiedoston sekä loin pari testiä
