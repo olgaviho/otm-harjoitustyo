@@ -49,21 +49,22 @@ public class CourseService {
     public boolean createCourse() {
         
         
-        System.out.print("name: ");
+        System.out.print("\n name: ");
         String name = reader.nextLine(); 
         System.out.print("description: ");
         String description = reader.nextLine(); 
         System.out.print("credits: ");
-        int credits = Integer.parseInt(reader.nextLine()); 
         
-        
-        Course course = new Course(name, description, credits, loggedIn);
         try {
+            int credits = Integer.parseInt(reader.nextLine()); 
+            Course course = new Course(name, description, credits, loggedIn);
             courseDao.createCourse(course);
+            
         } catch(Exception e) {
+            System.out.println("Error \n");
             return false;
         }
-
+        
         return true;
            
       
@@ -101,27 +102,24 @@ public class CourseService {
         } 
     }
     
-    public void getCourses() {
+    public void getYourCourses() {
         
         
         List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
         
         for (Course course : courses) {
-            System.out.println(course.getName() + ", " + course.getDescription() + ", " + course.getCredits());
-            
-        }
-        
-        
-          
+            System.out.println(course.getName() + ", " + course.getDescription() + ", " + course.getCredits());           
+        }   
     }
     
     
     
     public void yourCourses() {
-        printInstructions2();
+        
         
         while (true) {
-            System.out.print("command: ");
+            printInstructions2();
+            System.out.print("command: \n");
             
             String command = reader.nextLine();
 
@@ -138,8 +136,8 @@ public class CourseService {
                 
                 
             } else if (command.equals("2")) {
-                System.out.println("get courses");
-                System.out.println(getCourses());
+                System.out.println("Your courses:");
+                getYourCourses();
           
             }
     
@@ -151,7 +149,8 @@ public class CourseService {
         String name = reader.nextLine();
         System.out.print("username: ");
         String username = reader.nextLine();
-        
+        System.out.println("\n");
+        printInstructions();
         
         User user = new User(username, name);
         try {
@@ -167,14 +166,14 @@ public class CourseService {
     
     public void printInstructions() {
         
-        System.out.println("commands:  \n 1. add new user \n 2. log in \n x. quit");
+        System.out.println("commands:  \n 1. add new user \n 2. log in \n x. quit \n");
         
         
     }
     
     public void printInstructions2() {
         
-        System.out.println("commands:  \n 1. add new course \n 2. get your courses \n x. log out");
+        System.out.println("commands:  \n 1. add new course \n 2. get your courses \n x. log out \n");
     }
     
     public boolean logIn()  {   
@@ -189,9 +188,9 @@ public class CourseService {
         }
         
         if (loggedIn == null ) {
-            System.out.println("error");
+            System.out.println("Error");
         } else {
-            System.out.println("Welcome " + loggedIn.getName());
+            System.out.println("Welcome " + loggedIn.getName() + "\n");
             
             yourCourses();
             
