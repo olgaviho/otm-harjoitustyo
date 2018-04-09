@@ -101,14 +101,17 @@ public class CourseService {
         } 
     }
     
-    public List<Course> getCourses() {
-        if (loggedIn == null) {
-            return new ArrayList<>();
-        }
+    public void getCourses() {
+        
         
         List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
         
-        return courses;
+        for (Course course : courses) {
+            System.out.println(course.getName() + ", " + course.getDescription() + ", " + course.getCredits());
+            
+        }
+        
+        
           
     }
     
