@@ -6,6 +6,7 @@ Tällä hetkellä sovelluksessa on vain tekstikäyttöliittymä valmiina.
 Sovellus olettaa että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, jonka sisältö on seuraava:
 
 userFile=users.txt
+
 courseFile=courses.txt
 
 ## Uuden käyttäjän luominen <h3>
