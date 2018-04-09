@@ -9,6 +9,8 @@ userFile=users.txt
 
 courseFile=courses.txt
 
+(poista yksi riviväli ylläolevien kahden rivin välistä)
+
 ## Uuden käyttäjän luominen <h3>
 Uuden käyttäjän voi luoda valitsemalla aloituksessa luvun 1 ja sen jälkeen syöttämällä nimen ja käyttäjänimen.
 
