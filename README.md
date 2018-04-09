@@ -10,4 +10,4 @@ Käyttöohje
 
 Testausdokumentti
 
-Työaikakirjanpito
+[Työaikakirjanpito](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
