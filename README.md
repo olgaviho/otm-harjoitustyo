@@ -1,15 +1,13 @@
-# Excercise 1 <h1>
+# MyCourses<h1>
 
-## Week 1 <h2>
+Lyhyt kuvaus sovelluksesta
 
-*Here are my* **excercises**
+## Dokumentaatio<h2>
 
+Käyttöohje
 
-[komentorivi](https://github.com/olgaviho/otm-harjoitustyo/blob/master/laskarit/komentorivi.txt)
+[Alustava maarittelydokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/maarittelydokumentti.md)
 
+Testausdokumentti
 
-[gitlog](https://github.com/olgaviho/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-## Week 2 <h3>
-
-[alustava maarittelydokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/maarittelydokumentti.md)
+Työaikakirjanpito
