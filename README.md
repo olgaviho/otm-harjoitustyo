@@ -4,7 +4,7 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
 ## Dokumentaatio<h2>
 
-Käyttöohje
+[Käyttöohje](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/kaytto-ohje.md)
 
 [Alustava maarittelydokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/maarittelydokumentti.md)
 
