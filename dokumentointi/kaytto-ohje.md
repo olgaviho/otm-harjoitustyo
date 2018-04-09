@@ -2,29 +2,29 @@
 
 Tällä hetkellä sovelluksessa on vain tekstikäyttöliittymä valmiina.
 
-# Konfigurointi <h2>
+## Konfigurointi <h2>
 
 Sovellus olettaa että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, jonka sisältö on seuraava:
 
 userFile=users.txt
 courseFile=courses.txt
 
-# Uuden käyttäjän luominen <h2>
+## Uuden käyttäjän luominen <h2>
 
 Uuden käyttäjän voi luoda valitsemalla aloituksessa luvun 1 ja sen jälkeen syöttämällä nimen ja käyttäjänimen.
 
-# Kirjautuminen <h2>
+## Kirjautuminen <h2>
 
 Sovellukseen voi kirjautua sisään valitsemalla aloituksessa luvun 2 ja syöttämällä käyttäjänimensä.
 
-# Uuden kurssin luominen <h2>
+## Uuden kurssin luominen <h2>
 
 Uuden kurssin voi luoda valitsemalla kirjauduttuaan luvun 1 ja syöttmällä kurssin nimen, kuvauksen ja opintopistemäärän. 
 
-# Omien kurssitieojen katseleminen <h2> 
+## Omien kurssitieojen katseleminen <h2> 
 
 Omia kurssitietojaan voi katsella valitsemalla kirjauduttuaan luvun 2.
 
-# Sovelluksen sammuttaminen <h2> 
+## Sovelluksen sammuttaminen <h2> 
 
 Sovelluksesta voi kirjautua ulos valitsemalla merkin x kirjauduttuaan sekä aloituksessa.
