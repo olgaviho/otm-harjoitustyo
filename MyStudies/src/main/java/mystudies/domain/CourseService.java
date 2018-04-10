@@ -116,7 +116,7 @@ public class CourseService {
         }
         
         System.out.println("Number of courses: " + numberOfCourses);
-        System.out.println("Number of credits: " + numberOfCredits);
+        System.out.println("Number of credits: " + numberOfCredits + "\n");
     }
     
     

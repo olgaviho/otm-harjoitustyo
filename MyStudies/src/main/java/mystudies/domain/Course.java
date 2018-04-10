@@ -32,26 +32,7 @@ public class Course {
         this.user = user;
         
     }
-    
-    public Course(int id, String name, int credits, User user) {
-        
-        this.id = id;
-        this.name = name;
-        this.credits = credits;
-        this.user = user;
-        
-    }
-    
-    public Course(String name, int credits, User user) {
-        
-        this.name = name;
-        this. description = "";
-        this.credits = credits;
-        this.user = user;
-        
-    }
-
-  
+     
     
     public void setId(int id) {
         this.id =id;
