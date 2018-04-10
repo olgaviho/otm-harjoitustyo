@@ -73,17 +73,17 @@ public class CourseService {
     
     public void start() {
         System.out.println("My Studies: Course Service");
-        printInstructions();
+        printLogInInstructions();
         
       
         
         while (true) {
             System.out.println();
-            System.out.print("command: ");
+            System.out.print(" \n command: ");
             String command = reader.nextLine();
 
             if (!commands.keySet().contains(command)) {
-                printInstructions();
+                printLogInInstructions();
                 
             }
  
@@ -94,7 +94,7 @@ public class CourseService {
                 
             } else if (command.equals("2")) {
                 logIn();
-                printInstructions();
+                printLogInInstructions();
                 
 
             }
@@ -102,14 +102,21 @@ public class CourseService {
         } 
     }
     
-    public void getYourCourses() {
-        
+    public void getYourCourses() {        
+        int numberOfCredits = 0;
+        int numberOfCourses = 0;
         
         List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
+        numberOfCourses = courses.size();
+        
         
         for (Course course : courses) {
+            numberOfCredits = numberOfCredits + course.getCredits();
             System.out.println(course.getName() + ", " + course.getDescription() + ", " + course.getCredits());           
-        }   
+        }
+        
+        System.out.println("Number of courses: " + numberOfCourses);
+        System.out.println("Number of credits: " + numberOfCredits);
     }
     
     
@@ -118,13 +125,13 @@ public class CourseService {
         
         
         while (true) {
-            printInstructions2();
-            System.out.print("command: \n");
+            printCourseInstructions();
+            System.out.print("\n command: \n");
             
             String command = reader.nextLine();
 
             if (!commands.keySet().contains(command)) {
-                printInstructions2();
+                printCourseInstructions();
                 
             }
  
@@ -150,7 +157,7 @@ public class CourseService {
         System.out.print("username: ");
         String username = reader.nextLine();
         System.out.println("\n");
-        printInstructions();
+        printLogInInstructions();
         
         User user = new User(username, name);
         try {
@@ -164,16 +171,16 @@ public class CourseService {
 
     
     
-    public void printInstructions() {
+    public void printLogInInstructions() {
         
-        System.out.println("commands:  \n 1. add new user \n 2. log in \n x. quit \n");
+        System.out.println("commands:  \n 1 add new user \n 2 log in \n x quit \n");
         
         
     }
     
-    public void printInstructions2() {
+    public void printCourseInstructions() {
         
-        System.out.println("commands:  \n 1. add new course \n 2. get your courses \n x. log out \n");
+        System.out.println("commands:  \n 1 add new course \n 2 get your courses \n x log out \n");
     }
     
     public boolean logIn()  {   
