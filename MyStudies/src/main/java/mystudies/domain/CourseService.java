@@ -120,7 +120,7 @@ public class CourseService {
         
         while (true) {
             printCourseInstructions();
-            System.out.print("\n command: \n");
+            System.out.print("\n command: ");
             
             String command = reader.nextLine();
 
@@ -132,12 +132,12 @@ public class CourseService {
             if (command.equals("x")) {
                 break;
             } else if (command.equals("1")) {
-                System.out.println("create a course");
+                System.out.println("\n create a course");
                 createCourse();
                 
                 
             } else if (command.equals("2")) {
-                System.out.println("Your courses:");
+                System.out.println("\n Your courses:");
                 getYourCourses();
           
             }
