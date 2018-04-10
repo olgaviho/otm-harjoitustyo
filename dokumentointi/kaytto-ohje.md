@@ -5,11 +5,10 @@ Tällä hetkellä sovelluksessa on vain tekstikäyttöliittymä valmiina.
 ## Konfigurointi <h2>
 Sovellus olettaa että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, jonka sisältö on seuraava:
 
-´´´
+```
 userFile=users.txt
-
 courseFile=courses.txt
-´´´
+```
 
 ## Uuden käyttäjän luominen <h3>
 Uuden käyttäjän voi luoda valitsemalla aloituksessa luvun 1 ja sen jälkeen syöttämällä nimen ja käyttäjänimen.
