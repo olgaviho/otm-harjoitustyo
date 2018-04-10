@@ -37,8 +37,7 @@ public class CourseService {
         commands.put("x", "x quit");
         commands.put("1", "1 ");
         commands.put("2", "2 ");
-        
-        
+
     }
        
         
@@ -47,8 +46,7 @@ public class CourseService {
     }   
     
     public boolean createCourse() {
-        
-        
+
         System.out.print("\n name: ");
         String name = reader.nextLine(); 
         System.out.print("description: ");
@@ -95,8 +93,6 @@ public class CourseService {
             } else if (command.equals("2")) {
                 logIn();
                 printLogInInstructions();
-                
-
             }
         
         } 
@@ -104,10 +100,8 @@ public class CourseService {
     
     public void getYourCourses() {        
         int numberOfCredits = 0;
-        int numberOfCourses = 0;
-        
         List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
-        numberOfCourses = courses.size();
+        int numberOfCourses = courses.size();
         
         
         for (Course course : courses) {
@@ -201,10 +195,8 @@ public class CourseService {
             
             yourCourses();
             
-            loggedIn = null;
-            
-        }
-        
+            loggedIn = null;      
+        }   
         return true;
     }
     
