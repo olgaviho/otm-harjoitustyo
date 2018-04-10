@@ -1,2 +1,0 @@
-1;otm;cs course;5;olgaviho
-2;tito;cs course;5;olgaviho
