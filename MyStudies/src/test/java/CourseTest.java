@@ -19,19 +19,18 @@ public class CourseTest {
     @Before
     public void setUp() {
         user = new User("nimi", "kayttajanimi");
-        course1 = new Course(1, "nimi", "kuvaus", 5, user);
-        course2 = new Course("nimi", "kuvaus", 5, user);
+        course1 = new Course("nimi", "kuvaus", 5, user);
+        course2 = new Course(1,"nimi", "kuvaus", 5, user);
     }
     
     @Test
     public void getNameWorks() {
-        assertEquals("nimi",course1.getName());
-        assertEquals("nimi",course2.getName());   
+        assertEquals("nimi",course1.getName());  
     }
     
     @Test
     public void getIdWorks() {
-        assertEquals(1,course1.getId());
+        assertEquals(1,course2.getId());
     }
    
     @Test
