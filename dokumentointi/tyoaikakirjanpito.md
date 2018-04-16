@@ -9,3 +9,4 @@ Päivä | Aika | Mitä tein
 10.5. | 2,5 h | Jacoco test toimii ja checkstyle otettu käyttöön
 11.5. | 2 h | Tietokantaan tallennus aloitettu
 12.5. | 3,5 h | Tietokantaan tallenus saatu toimimaan
+15.5. | 2,5 h | checkstyle kunnossa ja luotu lisää testejä
