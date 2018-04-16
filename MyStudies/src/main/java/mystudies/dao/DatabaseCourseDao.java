@@ -75,10 +75,6 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     @Override
     public void delete(Integer key) throws SQLException {
         
- 
     }
 
-
-   
-    
 }

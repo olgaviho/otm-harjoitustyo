@@ -18,7 +18,7 @@ public class User {
     }
     
     public User(int studentNumber, String name) {
-        this.studentNumber= studentNumber;
+        this.studentNumber = studentNumber;
         this.name = name;
         
         

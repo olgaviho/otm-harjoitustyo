@@ -19,7 +19,7 @@ public class Course {
         
         this.courseId = courseId;
         this.name = name;
-        this. description = description;
+        this.description = description;
         this.credits = credits;
 
     }

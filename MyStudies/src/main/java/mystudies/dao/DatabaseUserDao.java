@@ -35,7 +35,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
         if (!hasOne) {
             return null;
         }       
-        User user = new User(rs.getInt("id"),rs.getString("name"));
+        User user = new User(rs.getInt("id"), rs.getString("name"));
         stmt.close();
         rs.close();
         conn.close();

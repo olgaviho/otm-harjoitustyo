@@ -7,10 +7,8 @@ package mystudies.ui;
  * 
  */
 
-import java.io.FileInputStream;
-import java.sql.*;
 
-import java.util.Properties;
+import java.sql.*;
 import java.util.Scanner;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
@@ -52,9 +50,6 @@ public class Main {
     stmt.execute();
     stmt2.execute();
     stmt3.execute();
-
-    
-    
     }
 
 

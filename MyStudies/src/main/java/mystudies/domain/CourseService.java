@@ -31,7 +31,7 @@ public class CourseService {
     private Map<String, String> commands;
     private boolean logged;
     
-    public CourseService(DatabaseCourseDao courseDao, DatabaseUserDao userDao,DatabaseCourseUserDao usersAndCourses, Scanner reader) {
+    public CourseService(DatabaseCourseDao courseDao, DatabaseUserDao userDao, DatabaseCourseUserDao usersAndCourses, Scanner reader) {
         this.userDao = userDao;
         this.courseDao = courseDao;
         this.reader = reader;
@@ -67,7 +67,7 @@ public class CourseService {
         Course course = new Course(courseId, name, description, credits);    
                
         Course newCourse = courseDao.saveOrUpdate(course);
-        if (usersAndCourses.findOne(loggedIn.getId(), courseId)== true) {           
+        if (usersAndCourses.findOne(loggedIn.getId(), courseId) == true) {           
         } else {
             usersAndCourses.save(loggedIn.getId(), courseId);              
         }
@@ -80,9 +80,9 @@ public class CourseService {
         }
  
         return true;
-           
-      
+                
     }
+    
     
     
     public void start() {
@@ -180,7 +180,7 @@ public class CourseService {
             User user = new User(studentnumber, name);
             userDao.saveOrUpdate(user);
             
-        } catch(Exception e) {
+        } catch (Exception e) {
             
             e.printStackTrace();
             return false;
@@ -212,11 +212,11 @@ public class CourseService {
             loggedIn = userDao.findOne(studentnumber);
             
             
-        } catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
         
-        if (loggedIn == null ) {
+        if (loggedIn == null) {
             System.out.println("Error");
         } else {
             
