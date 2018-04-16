@@ -5,9 +5,6 @@ import mystudies.domain.Course;
 import java.sql.*;
 import java.util.List;
 
-
-
-
 public class DatabaseCourseDao implements Dao<Course, Integer> {
     
     private Database database;
@@ -38,8 +35,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         conn.close();
         
         return course;
-        
-        
+     
     }
 
     @Override
@@ -48,7 +44,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     }
 
     @Override
-    public Course saveOrUpdate(Course course) throws SQLException {
+    public Course save(Course course) throws SQLException {
         Connection conn = database.getConnection();
         int courseId = course.getId();
         String description = course.getDescription();      
@@ -64,16 +60,15 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
             Course newCourse2 = findOne(courseId);
             conn.close();
             return newCourse2;
-            } else {
-
-            System.out.println("course exists");
-                    }
+        }
+        
         conn.close();
         return newCourse;
     }
 
     @Override
     public void delete(Integer key) throws SQLException {
+        // muista liitostaulun deletointi
         
     }
 

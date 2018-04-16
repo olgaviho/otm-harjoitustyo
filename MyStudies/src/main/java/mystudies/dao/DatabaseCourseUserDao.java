@@ -16,10 +16,9 @@ import java.util.List;
  */
 
 public class DatabaseCourseUserDao  {
-    
-     private Database database;
+    private Database database;
      
-     public DatabaseCourseUserDao(Database database) {
+    public DatabaseCourseUserDao(Database database) {
         this.database = database;
     }
      
@@ -60,8 +59,6 @@ public class DatabaseCourseUserDao  {
     
     public void delete(Integer key) throws SQLException {
         
- 
     }
-    
-    
+
 }

@@ -41,15 +41,15 @@ public class Main {
     
     public static void createTables(Database database) throws SQLException {
    
-    Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
     
-    PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists users (id integer PRIMARY KEY, name varchar(20))");
-    PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE if not exists courses (courseid integer PRIMARY KEY, name varchar(20), description varchar(20), credits integer)");
-    PreparedStatement stmt3 = conn.prepareStatement("CREATE TABLE if not exists usersandcourses (userid integer, courseid integer, foreign key(courseid) references courses(courseid), foreign key(userid) references users(id))");
+        PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists users (id integer PRIMARY KEY, name varchar(20))");
+        PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE if not exists courses (courseid integer PRIMARY KEY, name varchar(20), description varchar(20), credits integer)");
+        PreparedStatement stmt3 = conn.prepareStatement("CREATE TABLE if not exists usersandcourses (userid integer, courseid integer, foreign key(courseid) references courses(courseid), foreign key(userid) references users(id))");
 
-    stmt.execute();
-    stmt2.execute();
-    stmt3.execute();
+        stmt.execute();
+        stmt2.execute();
+        stmt3.execute();
     }
 
 

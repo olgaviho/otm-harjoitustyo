@@ -54,37 +54,40 @@ public class CourseService {
     public boolean createCourse() {
 
         try {
-        System.out.print("courseId: ");
-        int courseId = Integer.parseInt(reader.nextLine());
-        System.out.print("\n name: ");
-        String name = reader.nextLine(); 
-        System.out.print("description: ");
-        String description = reader.nextLine(); 
-        System.out.print("credits: ");
-        int credits = Integer.parseInt(reader.nextLine()); 
-        
-        
-        Course course = new Course(courseId, name, description, credits);    
+            System.out.print("courseId: ");
+            int courseId = Integer.parseInt(reader.nextLine());
+            String nimi = askCourseName();
+            String description = askCourseDescription();
+            System.out.print("credits: ");
+            int credits = Integer.parseInt(reader.nextLine()); 
+
+            Course course = new Course(courseId, nimi, description, credits);    
                
-        Course newCourse = courseDao.saveOrUpdate(course);
-        if (usersAndCourses.findOne(loggedIn.getId(), courseId) == true) {           
-        } else {
-            usersAndCourses.save(loggedIn.getId(), courseId);              
-        }
-        
-            
-        } catch(Exception e) {
-            
+            Course newCourse = courseDao.save(course);
+            if (usersAndCourses.findOne(loggedIn.getId(), courseId) == false) {             
+                usersAndCourses.save(loggedIn.getId(), courseId);              
+            }
+        } catch (Exception e) {           
             System.out.println(e.toString());
             return false;
-        }
- 
+        } 
         return true;
                 
     }
     
+    public String askCourseName() {
+        System.out.print("\n name: ");
+        String name = reader.nextLine();
+        return name;    
+    }
+        
     
-    
+    public String askCourseDescription() {
+        System.out.print("\n description: ");
+        String description = reader.nextLine();
+        return description;    
+    }
+
     public void start() {
         System.out.println("My Studies: Course Service");
         printLogInInstructions();
@@ -141,12 +144,12 @@ public class CourseService {
             String command = reader.nextLine();
     
             if (!commands.keySet().contains(command)) {
-                 printCourseInstructions();
+                printCourseInstructions();
                  
-                }
+            }
     
             if (command.equals("x")) {
-                 break;
+                break;
             } else if (command.equals("1")) {                
                 System.out.println("\n create a course");
                 createCourse();
@@ -154,6 +157,7 @@ public class CourseService {
                 
             } else if (command.equals("2")) {
                 System.out.println("\n Your courses:");
+                System.out.println("not working yet :( \n");
                 /**getYourCourses();*/
          
             }
@@ -178,7 +182,7 @@ public class CourseService {
             printLogInInstructions();
             
             User user = new User(studentnumber, name);
-            userDao.saveOrUpdate(user);
+            userDao.save(user);
             
         } catch (Exception e) {
             
@@ -220,14 +224,12 @@ public class CourseService {
             System.out.println("Error");
         } else {
             
-            System.out.println("Welcome " + loggedIn.getName() + "\n");
-            
+            System.out.println("Welcome " + loggedIn.getName() + "\n"); 
             yourCourses();
-              
             loggedIn = null;      
         }   
         return true;
-     }
+    }
    
 }
 

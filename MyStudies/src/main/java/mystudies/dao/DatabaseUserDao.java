@@ -48,7 +48,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
     }
 
     @Override
-    public User saveOrUpdate(User user) throws SQLException {
+    public User save(User user) throws SQLException {
         Connection conn = database.getConnection();
         int userId = user.getId();
         String name = user.getName();       
@@ -66,7 +66,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
         } else {
             
             System.out.println("error");
-                    }
+        }
         
         conn.close();       
         return null;
@@ -75,6 +75,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
 
     @Override
     public void delete(Integer key) throws SQLException {
+//        lisää liitostaulun deletointi jonnekin
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM mystudies WHERE id = ?");
         stmt.setInt(1, key);
