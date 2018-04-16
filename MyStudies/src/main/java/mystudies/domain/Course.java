@@ -9,36 +9,21 @@ package mystudies.domain;
  */
 public class Course {
     
-    private int id;
+    private int courseId;
     private String name;
     private String description;
     private int credits;
-    private User user;
+
     
-    public Course(int id, String name, String description, int credits, User user) {
-        this.id = id;
+    public Course(int courseId, String name, String description, int credits) {
+        
+        this.courseId = courseId;
         this.name = name;
         this. description = description;
         this.credits = credits;
-        this.user = user;
-        
+
     }
-    
-    public Course(String name, String description, int credits, User user) {
-        
-        this.name = name;
-        this. description = description;
-        this.credits = credits;
-        this.user = user;
-        
-    }
-     
-    
-    public void setId(int id) {
-        this.id =id;
-        
-    }
-    
+
     public void editDescription(String newDescription) {
         this.description = newDescription;
         
@@ -62,12 +47,8 @@ public class Course {
         return description;        
     }
     
-    public User getUser() {
-        return user;        
-    }
-    
     public int getId() {
-        return id;
+        return courseId;
     }
     
     
