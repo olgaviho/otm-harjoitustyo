@@ -13,6 +13,7 @@ import mystudies.domain.User;
  *
  * @author olgaviho
  */
+
 public class DatabaseUserDao implements Dao<User, Integer> {
     
     private Database database;

@@ -32,7 +32,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
             return null;
         }      
         
-        Course course = new Course(rs.getInt("courseid"),rs.getString("name"),rs.getString("description"), rs.getInt("credits"));
+        Course course = new Course(rs.getInt("courseid"), rs.getString("name"), rs.getString("description"), rs.getInt("credits"));
         stmt.close();
         rs.close();
         conn.close();
@@ -51,41 +51,24 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     public Course saveOrUpdate(Course course) throws SQLException {
         Connection conn = database.getConnection();
         int courseId = course.getId();
-        String name = course.getName();
-        String description = course.getDescription(); 
-        int credits = course.getCredits();
-        
-        Course newCourse = findOne(courseId);
-        
+        String description = course.getDescription();      
+        Course newCourse = findOne(courseId);        
         if (newCourse == null) {
-        
-        
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO courses " + "(courseid, name, description, credits) " + "VALUES (?, ?, ?, ?)");
-            stmt.setInt(1,courseId);
-            stmt.setString(2, name);           
+            stmt.setInt(1, courseId);
+            stmt.setString(2, course.getName());           
             stmt.setString(3, description); 
-            stmt.setInt(4, credits);
-            
+            stmt.setInt(4, course.getCredits());
             stmt.executeUpdate();
-                        
-            
             stmt.close();
-
-            
             Course newCourse2 = findOne(courseId);
             conn.close();
-            
             return newCourse2;
-            
             } else {
-            
-            System.out.println("course exists");
 
+            System.out.println("course exists");
                     }
-        
         conn.close();
-        
-        
         return newCourse;
     }
 

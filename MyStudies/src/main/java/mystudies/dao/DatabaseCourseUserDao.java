@@ -14,6 +14,7 @@ import java.util.List;
  *
  * @author olgaviho
  */
+
 public class DatabaseCourseUserDao  {
     
      private Database database;
@@ -31,7 +32,6 @@ public class DatabaseCourseUserDao  {
         ResultSet rs = stmt.executeQuery();
         
         boolean hasOne = rs.next();
-        
         if (!hasOne) {
             return false;
         } 
