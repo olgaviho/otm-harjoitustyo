@@ -10,4 +10,4 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
 [Työaikakirjanpito](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
-[Arkkitehtuurikuvaus](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Arkkitehtuurikuvaus.JPG)
+[Arkkitehtuurikuvaus](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuurikuvaus.md)
