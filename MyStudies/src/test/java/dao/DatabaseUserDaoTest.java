@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import java.sql.Connection;
@@ -12,7 +8,6 @@ import java.util.Scanner;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseUserDao;
 import mystudies.domain.User;
-import static mystudies.ui.Main.createTables;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,7 +41,7 @@ public class DatabaseUserDaoTest {
     
     
     @Test
-    public void itIsPossibleToFindUsers() throws SQLException {        
+    public void tableCanBeEmpty() throws SQLException {        
           
        assertEquals(null,userDao.findOne(678));
     }
@@ -56,6 +51,26 @@ public class DatabaseUserDaoTest {
         userDao.save(user);
         assertEquals("nimi",userDao.findOne(user.getId()).getName());
         
+    }
+    @Test
+    public void itIsNotBossibleAddTheSameUserTwice() throws SQLException {
+//        Not working yet
+        
+    }
+    
+    @Test
+    public void itIsPossibleToDeleteUsers() throws SQLException {
+        userDao.delete(user.getId());
+        assertEquals(null,userDao.findOne(123));
+    }
+    
+    @After
+    public void tearDown() throws SQLException {
+        Connection conn = database.getConnection();  
+        PreparedStatement stmt = conn.prepareStatement("DROP TABLE users");
+        stmt.executeUpdate();
+        stmt.close();
+        conn.close();
     }
     
     

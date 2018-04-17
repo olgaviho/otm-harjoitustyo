@@ -7,12 +7,9 @@ package mystudies.domain;
  * 
  */
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.dao.DatabaseUserDao;
@@ -135,8 +132,7 @@ public class CourseService {
     
     
     public void yourCourses() {
-       
-        
+              
         while (true) {
             printCourseInstructions();
             System.out.print("\n command: ");
@@ -166,10 +162,7 @@ public class CourseService {
     }
       
       
-    public boolean createUser()  {  
-        
-        
-        
+    public boolean createUser()  {          
         System.out.println("student number:");
         
         try {
@@ -184,9 +177,8 @@ public class CourseService {
             User user = new User(studentnumber, name);
             userDao.save(user);
             
-        } catch (Exception e) {
-            
-            e.printStackTrace();
+        } catch (Exception e) {            
+            System.out.println("error");
             return false;
         }
  
@@ -195,15 +187,12 @@ public class CourseService {
 
     
     
-    public void printLogInInstructions() {
-        
+    public void printLogInInstructions() {        
         System.out.println("commands:  \n 1 add new user \n 2 log in \n x quit \n");
-        
-        
+
     }
     
-    public void printCourseInstructions() {
-        
+    public void printCourseInstructions() {        
         System.out.println("commands:  \n 1 add new course \n 2 get your courses \n x log out \n");
     }
     

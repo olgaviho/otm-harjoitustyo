@@ -1,10 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+import mystudies.dao.Database;
+import mystudies.dao.DatabaseCourseDao;
+import mystudies.domain.Course;
+import mystudies.domain.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,28 +22,57 @@ import static org.junit.Assert.*;
  */
 public class DatabaseCourseDaoTest {
     
-    public DatabaseCourseDaoTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    Database database;
+    DatabaseCourseDao courseDao;
+    Course course;
+
     
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        Scanner reader = new Scanner(System.in);
+        database = new Database("jdbc:sqlite:mystudiestest.db");        
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists courses (courseid integer PRIMARY KEY, name varchar(20), description varchar(20), credits integer)");
+        stmt.execute();        
+        courseDao = new DatabaseCourseDao(database);
+        course = new Course(1234, "nimi", "description", 10);
+  
+    }
+    
+    @Test
+    public void tableCanBeEmpty() throws SQLException {                  
+       assertEquals(null,courseDao.findOne(678));
+    }
+     
+    @Test
+    public void itIsPossibleToSaveCourses() throws SQLException {
+        courseDao.save(course);
+        assertEquals("nimi",courseDao.findOne(course.getId()).getName());
+        
+    }
+    
+    @Test
+    public void cantAddTheSameCourse() throws SQLException {
+        courseDao.save(course);
+        courseDao.save(course);
+        assertEquals("nimi",courseDao.findOne(course.getId()).getName());
+    }
+    
+    @Test
+    public void itIsPossibleToDeleteCourses() throws SQLException {
+//        Ei vielä toimi
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
+        Connection conn = database.getConnection();  
+        PreparedStatement stmt = conn.prepareStatement("DROP TABLE courses");
+        stmt.executeUpdate();
+        stmt.close();
+        conn.close();
     }
+    
+    
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
 }
