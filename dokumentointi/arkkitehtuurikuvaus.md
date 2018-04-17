@@ -1,4 +1,4 @@
 
 Arkkitehtuurikuvaus: 
-![alt text](home/ad/lxhome/o/olgaviho/Linux/Pictures "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/olgaviho/otm-harjoitustyo/master/dokumentointi/Kuvat/Arkkitehtuurikuvaus.JPG "Logo Title Text 1")
 
