@@ -1,12 +1,7 @@
-/*
 
- */
 package mystudies.domain;
 
-/**
- * yksittäistä kurssia edustava luokka
- * @author olgaviho
- */
+
 public class Course {
     
     private int courseId;

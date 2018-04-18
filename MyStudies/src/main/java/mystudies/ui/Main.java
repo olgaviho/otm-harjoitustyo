@@ -1,11 +1,7 @@
 
 package mystudies.ui;
 
-/**
- *
- * @author olgaviho
- * 
- */
+
 
 
 import java.sql.*;
@@ -34,8 +30,7 @@ public class Main {
         DatabaseCourseUserDao usersAndCourses = new DatabaseCourseUserDao(database);
         CourseService courseservice = new CourseService(courseDao, userDao, usersAndCourses, reader);
         
-        courseservice.start();
-        
+        courseservice.start();        
     }
     
     
@@ -51,7 +46,5 @@ public class Main {
         stmt2.execute();
         stmt3.execute();
     }
-
-
     
 }

@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mystudies.dao;
 
 import mystudies.domain.Course;
 import java.sql.*;
 import java.util.List;
+import java.util.ArrayList;
+import mystudies.domain.User;
 
 
-/**
- *
- * @author olgaviho
- */
 
 public class DatabaseCourseUserDao  {
     private Database database;
@@ -39,8 +33,26 @@ public class DatabaseCourseUserDao  {
         
     }
     
-    public List<Course> findAll() throws SQLException {
-        return null; 
+    public List<Integer> findAll(Integer userkey) throws SQLException {
+        Connection conn = database.getConnection(); 
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usersandcourses WHERE userid = ?"); 
+        stmt.setInt(1, userkey);
+        ResultSet rs = stmt.executeQuery();
+
+        
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+
+        while (rs.next()) {
+
+           int id =  rs.getInt("courseid");
+           ids.add(id);
+        }
+        
+        stmt.close();
+        rs.close();
+        conn.close();
+        
+        return ids; 
     }
     
     public Course save(Integer userkey, Integer courseKey) throws SQLException {
@@ -57,8 +69,15 @@ public class DatabaseCourseUserDao  {
         
     }
     
-    public void delete(Integer key) throws SQLException {
-        
+    public void deleteCourse(Integer coursekey, Integer userid) throws SQLException {
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM usersandcourses WHERE userid = ? AND courseid = ?");
+        stmt.setInt(1, userid);
+        stmt.setInt(2, coursekey);
+        stmt.executeUpdate();
+        stmt.close();
+        conn.close();
     }
+    
 
 }

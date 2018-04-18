@@ -1,12 +1,11 @@
 
 package mystudies.domain;
 
-/**
- * sovelluslogiikkaluokka
- * @author olgaviho
- * 
- */
 
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -26,13 +25,13 @@ public class CourseService {
     private User loggedIn;
     private Scanner reader;
     private Map<String, String> commands;
-    private boolean logged;
+
     
     public CourseService(DatabaseCourseDao courseDao, DatabaseUserDao userDao, DatabaseCourseUserDao usersAndCourses, Scanner reader) {
         this.userDao = userDao;
         this.courseDao = courseDao;
         this.reader = reader;
-        this.logged = false;
+
         this.usersAndCourses = usersAndCourses;
         
         commands = new TreeMap<>();
@@ -113,22 +112,33 @@ public class CourseService {
         
         } 
     }
-    /**
-    public void getYourCourses() {        
-        int numberOfCredits = 0;
-        List<Course> courses = courseDao.getAll().stream().filter(cour -> cour.getUser().equals(loggedIn)).collect(Collectors.toList());
-        int numberOfCourses = courses.size();
-        
-        
-        for (Course course : courses) {
-            numberOfCredits = numberOfCredits + course.getCredits();
-            System.out.println(course.getName() + ", " + course.getDescription() + ", " + course.getCredits());           
+    
+    public void getYourCourses() { 
+     int numberOfCourses =  0;
+     int numberOfCredits = 0;
+     
+        try {
+            List<Integer> courseids = usersAndCourses.findAll(loggedIn.getId());
+            numberOfCourses = courseids.size();
+            
+            for (Integer ids : courseids) {
+                Course course = courseDao.findOne(ids);
+                numberOfCredits = numberOfCredits + course.getCredits();
+                System.out.println(course.getId() + "; " + course.getName() + "; " + course.getDescription() + "; " + course.getCredits());
+
+            }
+            
+                
+        } catch (SQLException e) {
+            
+            System.out.println("You don't have courses yet");
         }
+
         
         System.out.println("Number of courses: " + numberOfCourses);
         System.out.println("Number of credits: " + numberOfCredits + "\n");
      }
-    */
+    
     
     
     public void yourCourses() {
@@ -152,10 +162,11 @@ public class CourseService {
                 
                 
             } else if (command.equals("2")) {
-                System.out.println("\n Your courses:");
-                System.out.println("not working yet :( \n");
-                /**getYourCourses();*/
+                System.out.println("\n Your courses: \n");
+                getYourCourses();
          
+            } else if (command.equals("3")) {
+                deleteCourse();
             }
        
         }
@@ -177,7 +188,7 @@ public class CourseService {
             User user = new User(studentnumber, name);
             userDao.save(user);
             
-        } catch (Exception e) {            
+        } catch (SQLException e) {            
             System.out.println("error");
             return false;
         }
@@ -193,7 +204,7 @@ public class CourseService {
     }
     
     public void printCourseInstructions() {        
-        System.out.println("commands:  \n 1 add new course \n 2 get your courses \n x log out \n");
+        System.out.println("commands:  \n 1 add new course \n 2 get your courses \n 3 delete course \n x log out \n");
     }
     
     
@@ -205,7 +216,7 @@ public class CourseService {
             loggedIn = userDao.findOne(studentnumber);
             
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             return false;
         }
         
@@ -218,6 +229,21 @@ public class CourseService {
             loggedIn = null;      
         }   
         return true;
+    }
+    
+    public void deleteCourse()  {
+        System.out.println("\n Course id: \n");
+        int courseid = Integer.parseInt(reader.nextLine());
+        
+        try {
+            usersAndCourses.deleteCourse(courseid, loggedIn.getId());
+            System.out.println("\n Done \n");
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
     }
    
 }

@@ -68,7 +68,12 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
 
     @Override
     public void delete(Integer key) throws SQLException {
-        // muista liitostaulun deletointi
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM courses WHERE courseid = ?");
+        stmt.setInt(1, key);
+        stmt.executeUpdate();
+        stmt.close();
+        conn.close();
         
     }
 
