@@ -11,4 +11,5 @@ Päivä | Aika | Mitä tein
 12.5. | 3,5 h | Tietokantaan tallenus saatu toimimaan
 15.5. | 2,5 h | Checkstyle kunnossa ja luotu lisää testejä
 16.5. | 2 h | Lisää testejä luotu
-Yth. | 23 h
+17.5. | 1,5 h | Kurssien poistaminen ja niiden lukeminen on mahdollista
+Yth. | 24,5 h
