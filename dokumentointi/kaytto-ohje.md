@@ -12,7 +12,10 @@ Sovellukseen voi kirjautua sisään valitsemalla aloituksessa luvun 2 ja syött�
 Uuden kurssin voi luoda valitsemalla kirjauduttuaan luvun 1 ja syöttmällä kurssin id:n, nimen, kuvauksen ja opintopistemäärän. 
 
 ## Omien kurssitietojen katseleminen <h6> 
-Omia kurssitietojaan voi katsella valitsemalla kirjauduttuaan luvun 2. (Ei toimi toistaiseksi.)
+Omia kurssitietojaan voi katsella valitsemalla kirjauduttuaan luvun 2.
 
-## Sovelluksen sammuttaminen <h7> 
+## Kurssin poistaminen <h7>
+Kurssin voi poistaa valitsemalla luvun 4 ja syöttämällä kurssin id:n.
+
+## Sovelluksen sammuttaminen <h8> 
 Sovelluksesta voi kirjautua ulos valitsemalla merkin x kirjauduttuaan sekä aloituksessa.
