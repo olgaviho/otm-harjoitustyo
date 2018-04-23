@@ -8,7 +8,6 @@ import java.util.Scanner;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.domain.Course;
-import mystudies.domain.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

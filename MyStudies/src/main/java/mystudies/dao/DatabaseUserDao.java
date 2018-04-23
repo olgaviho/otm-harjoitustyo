@@ -33,6 +33,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
         boolean hasOne = rs.next();
         
         if (!hasOne) {
+            
             return null;
         }       
         User user = new User(rs.getInt("id"), rs.getString("name"));
@@ -59,7 +60,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
 
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users " + "(id, name) " + "VALUES (?, ?)");
             stmt.setInt(1, userId);           
-            stmt.setString(2, name);            
+            stmt.setString(2, name);       
             stmt.executeUpdate();
             stmt.close();
             

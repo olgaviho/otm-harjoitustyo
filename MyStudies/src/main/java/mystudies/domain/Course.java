@@ -1,7 +1,6 @@
 
 package mystudies.domain;
 
-
 public class Course {
     
     private int courseId;

@@ -1,8 +1,6 @@
 
 package mystudies.domain;
 
-
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,11 +84,12 @@ public class CourseService {
 
     public void start() {
         System.out.println("My Studies: Course Service");
-        printLogInInstructions();
+
         
       
         
         while (true) {
+            printLogInInstructions();
             System.out.println();
             System.out.print(" \n command: ");
             String command = reader.nextLine();
@@ -103,11 +102,23 @@ public class CourseService {
             if (command.equals("x")) {
                 break;
             } else if (command.equals("1")) {
-                createUser();             
+                
+                boolean createuser = createUser();
+                
+                if (createuser == false) {
+                    System.out.println("error");
+    
+                } else {
+                    System.out.println("created");
+                }          
                 
             } else if (command.equals("2")) {
-                logIn();
-                printLogInInstructions();
+                boolean login = logIn();
+                
+                if (login == false) {
+                    System.out.println("error");
+                }
+                
             }
         
         } 
@@ -175,26 +186,36 @@ public class CourseService {
       
     public boolean createUser()  {          
         System.out.println("student number:");
+        int studentnumber = 0;
         
         try {
         
-            int studentnumber = Integer.parseInt(reader.nextLine());
-            System.out.print("name: ");
-            String name = reader.nextLine();
+            studentnumber = Integer.parseInt(reader.nextLine());
             
-            System.out.println("\n");
-            printLogInInstructions();
-            
-            User user = new User(studentnumber, name);
-            userDao.save(user);
-            
-        } catch (SQLException e) {            
-            System.out.println("error");
+        } catch (Exception e) {            
             return false;
-        }
- 
+
+            }
+            
+        System.out.print("name: ");
+        String name = reader.nextLine();
+            
+        System.out.println("\n");
+        printLogInInstructions();
+        
+            try {
+                User user = new User(studentnumber, name);
+                userDao.save(user);
+            
+            } catch (Exception ex) {
+
+                return false;
+            }
+            
         return true;
-    }
+
+        }
+
 
     
     
@@ -210,24 +231,33 @@ public class CourseService {
     
     public boolean logIn()  {   
         System.out.print("student number: ");
-        int studentnumber = Integer.parseInt(reader.nextLine());
+        int sn = 0;
         
         try {
-            loggedIn = userDao.findOne(studentnumber);
+        
+            sn = Integer.parseInt(reader.nextLine());
+        } catch (Exception ee) {
+            return false;
+        }
+        
+        try {
             
-            
+            loggedIn = userDao.findOne(sn);
+
         } catch (SQLException e) {
             return false;
         }
         
         if (loggedIn == null) {
-            System.out.println("Error");
+            return false;
+            
         } else {
             
             System.out.println("Welcome " + loggedIn.getName() + "\n"); 
             yourCourses();
-            loggedIn = null;      
+      
         }   
+        
         return true;
     }
     
