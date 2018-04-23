@@ -50,19 +50,29 @@ public class CourseService {
         try {
             System.out.print("courseId: ");
             int courseId = Integer.parseInt(reader.nextLine());
-            String nimi = askCourseName();
-            String description = askCourseDescription();
-            System.out.print("credits: ");
-            int credits = Integer.parseInt(reader.nextLine()); 
+            Course course = courseDao.findOne(courseId);
+            
+            if (course == null) {
+                String nimi = askCourseName();
+                String description = askCourseDescription();
+                System.out.print("credits: ");
+                int credits = Integer.parseInt(reader.nextLine()); 
 
-            Course course = new Course(courseId, nimi, description, credits);    
-               
-            Course newCourse = courseDao.save(course);
-            if (usersAndCourses.findOne(loggedIn.getId(), courseId) == false) {             
-                usersAndCourses.save(loggedIn.getId(), courseId);              
+                course = new Course(courseId, nimi, description, credits);
+                Course newCourse = courseDao.save(course);
+                
+            } else {
+                System.out.println("this course already exists");
             }
-        } catch (Exception e) {           
-            System.out.println(e.toString());
+ 
+            if (usersAndCourses.findOne(loggedIn.getId(), courseId) == false) {             
+                usersAndCourses.save(loggedIn.getId(), courseId);             
+            } else {
+                System.out.println("you already have this course");
+                return false;
+            }
+        } catch (Exception e) { 
+            System.out.println(e);
             return false;
         } 
         return true;
@@ -91,10 +101,6 @@ public class CourseService {
             System.out.print(" \n command: ");
             String command = reader.nextLine();
 
-            if (!commands.keySet().contains(command)) {
-                printLogInInstructions();
-                
-            }
  
             if (command.equals("x")) {
                 break;
@@ -115,9 +121,7 @@ public class CourseService {
                 if (login == false) {
                     System.out.println("error");
                 }
-                
-            }
-        
+            }        
         } 
     }
     
@@ -164,10 +168,18 @@ public class CourseService {
             }
     
             if (command.equals("x")) {
+                loggedIn = null;
                 break;
             } else if (command.equals("1")) {                
                 System.out.println("\n create a course");
-                createCourse();
+                boolean newcourse = createCourse();
+                
+                if (newcourse == false) {
+                    System.out.println("error");
+                } else {
+                    System.out.println("created");
+                }
+                
                 
                 
             } else if (command.equals("2")) {
@@ -199,18 +211,23 @@ public class CourseService {
         String name = reader.nextLine();
             
         System.out.println("\n");
-        printLogInInstructions();
+        User uuseri = null;
         
         try {
-            User user = new User(studentnumber, name);
-            userDao.save(user);
+            User user = new User(studentnumber, name);            
+            uuseri = userDao.save(user);
             
         } catch (Exception ex) {
 
             return false;
         }
+        
+        if (uuseri == null) {
+            return true;
+        }
+        
             
-        return true;
+        return false;
 
     }
 
@@ -218,12 +235,12 @@ public class CourseService {
     
     
     public void printLogInInstructions() {        
-        System.out.println("commands:  \n 1 add new user \n 2 log in \n x quit \n");
+        System.out.println("** commands:  \n 1 add new user \n 2 log in \n x quit \n");
 
     }
     
     public void printCourseInstructions() {        
-        System.out.println("commands:  \n 1 add new course \n 2 get your courses \n 3 delete course \n x log out \n");
+        System.out.println("** commands:  \n 1 add new course \n 2 get your courses \n 3 delete course \n x log out \n");
     }
         
     public boolean logIn()  {   
@@ -244,7 +261,7 @@ public class CourseService {
             
         } else {
             
-            System.out.println("Welcome " + loggedIn.getName() + "\n"); 
+            System.out.println("** Welcome " + loggedIn.getName() + " \n"); 
             yourCourses();      
         }           
         return true;
@@ -252,14 +269,16 @@ public class CourseService {
     
     public void deleteCourse()  {
         System.out.println("\n Course id: \n");
-        int courseid = Integer.parseInt(reader.nextLine());
+        int courseid = 0;
         
         try {
+            courseid = Integer.parseInt(reader.nextLine());
             usersAndCourses.deleteCourse(courseid, loggedIn.getId());
             System.out.println("\n Done \n");
             
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("error");
         }
         
         

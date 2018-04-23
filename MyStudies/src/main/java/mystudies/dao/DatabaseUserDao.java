@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mystudies.dao;
 
 import java.sql.*;
 import java.util.List;
 import mystudies.domain.User;
 
-/**
- *
- * @author olgaviho
- */
 
 public class DatabaseUserDao implements Dao<User, Integer> {
     
@@ -63,15 +55,13 @@ public class DatabaseUserDao implements Dao<User, Integer> {
             stmt.setString(2, name);       
             stmt.executeUpdate();
             stmt.close();
+            return null;
             
         } else {
-            
-            System.out.println("error");
+
+            conn.close();       
+            return newUser;
         }
-        
-        conn.close();       
-        return null;
-        
     }
 
     @Override
