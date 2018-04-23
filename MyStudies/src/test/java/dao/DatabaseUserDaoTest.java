@@ -41,21 +41,14 @@ public class DatabaseUserDaoTest {
     
     
     @Test
-    public void tableCanBeEmpty() throws SQLException {        
-          
+    public void tableCanBeEmpty() throws SQLException {                  
        assertEquals(null,userDao.findOne(678));
     }
      
     @Test
     public void itIsPossibleToSaveUsers() throws SQLException {
         userDao.save(user);
-        assertEquals("nimi",userDao.findOne(user.getId()).getName());
-        
-    }
-    @Test
-    public void itIsNotBossibleAddTheSameUserTwice() throws SQLException {
-//        Not working yet
-        
+        assertEquals("nimi",userDao.findOne(user.getId()).getName());        
     }
     
     @Test

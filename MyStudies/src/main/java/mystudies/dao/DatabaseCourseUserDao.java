@@ -44,8 +44,8 @@ public class DatabaseCourseUserDao  {
 
         while (rs.next()) {
 
-           int id =  rs.getInt("courseid");
-           ids.add(id);
+            int id =  rs.getInt("courseid");
+            ids.add(id);
         }
         
         stmt.close();

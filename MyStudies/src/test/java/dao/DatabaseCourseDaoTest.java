@@ -1,6 +1,5 @@
 
 package dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -56,7 +55,8 @@ public class DatabaseCourseDaoTest {
     
     @Test
     public void itIsPossibleToDeleteCourses() throws SQLException {
-//        Ei vielä toimi
+        courseDao.delete(course.getId());
+        assertEquals(null,courseDao.findOne(123));
     }
     
     @After

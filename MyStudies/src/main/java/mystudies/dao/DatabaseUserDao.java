@@ -76,7 +76,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
 
     @Override
     public void delete(Integer key) throws SQLException {
-//        lisää liitostaulun deletointi jonnekin
+
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM users WHERE id = ?");
         stmt.setInt(1, key);

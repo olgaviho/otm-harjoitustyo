@@ -85,9 +85,6 @@ public class CourseService {
     public void start() {
         System.out.println("My Studies: Course Service");
 
-        
-      
-        
         while (true) {
             printLogInInstructions();
             System.out.println();
@@ -125,8 +122,8 @@ public class CourseService {
     }
     
     public void getYourCourses() { 
-     int numberOfCourses =  0;
-     int numberOfCredits = 0;
+        int numberOfCourses =  0;
+        int numberOfCredits = 0;
      
         try {
             List<Integer> courseids = usersAndCourses.findAll(loggedIn.getId());
@@ -148,7 +145,8 @@ public class CourseService {
         
         System.out.println("Number of courses: " + numberOfCourses);
         System.out.println("Number of credits: " + numberOfCredits + "\n");
-     }
+    
+    }
     
     
     
@@ -195,7 +193,7 @@ public class CourseService {
         } catch (Exception e) {            
             return false;
 
-            }
+        }
             
         System.out.print("name: ");
         String name = reader.nextLine();
@@ -203,18 +201,18 @@ public class CourseService {
         System.out.println("\n");
         printLogInInstructions();
         
-            try {
-                User user = new User(studentnumber, name);
-                userDao.save(user);
+        try {
+            User user = new User(studentnumber, name);
+            userDao.save(user);
             
-            } catch (Exception ex) {
+        } catch (Exception ex) {
 
-                return false;
-            }
+            return false;
+        }
             
         return true;
 
-        }
+    }
 
 
     
@@ -227,8 +225,7 @@ public class CourseService {
     public void printCourseInstructions() {        
         System.out.println("commands:  \n 1 add new course \n 2 get your courses \n 3 delete course \n x log out \n");
     }
-    
-    
+        
     public boolean logIn()  {   
         System.out.print("student number: ");
         int sn = 0;
@@ -236,17 +233,11 @@ public class CourseService {
         try {
         
             sn = Integer.parseInt(reader.nextLine());
+            loggedIn = userDao.findOne(sn);
         } catch (Exception ee) {
             return false;
-        }
-        
-        try {
-            
-            loggedIn = userDao.findOne(sn);
+        }        
 
-        } catch (SQLException e) {
-            return false;
-        }
         
         if (loggedIn == null) {
             return false;
@@ -254,10 +245,8 @@ public class CourseService {
         } else {
             
             System.out.println("Welcome " + loggedIn.getName() + "\n"); 
-            yourCourses();
-      
-        }   
-        
+            yourCourses();      
+        }           
         return true;
     }
     
