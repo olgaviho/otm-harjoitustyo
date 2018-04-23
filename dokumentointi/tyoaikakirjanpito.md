@@ -13,4 +13,4 @@ Päivä | Aika | Mitä tein
 16.5. | 2 h | Lisää testejä luotu
 17.5. | 1,5 h | Kurssien poistaminen ja niiden lukeminen on mahdollista
 23.5. | 3,5 h | jar-tiedosto luotu ja koodia tehty toimivammaksi
-Yth. | 24,5 h
+Yth. | 28 h
