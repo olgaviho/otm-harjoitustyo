@@ -6,11 +6,12 @@ Päivä | Aika | Mitä tein
 27.3. | 2,5 h | Loin tarvittavia luokkia sovellukseeni
 28.3. | 3,5 h | Loin main luokan ja sain sisäänkirjautumisen, uuden käyttäjän luonnin ja kurssien luonnin toimimaan
 9.4. | 2,5 h | Lisäsin koodiin exceptioneita ja päivitin readme tiedoston sekä loin pari testiä
-10.5. | 2,5 h | Jacoco test toimii ja checkstyle otettu käyttöön
-11.5. | 2 h | Tietokantaan tallennus aloitettu
-12.5. | 3,5 h | Tietokantaan tallenus saatu toimimaan
-15.5. | 2,5 h | Checkstyle kunnossa ja luotu lisää testejä
-16.5. | 2 h | Lisää testejä luotu
-17.5. | 1,5 h | Kurssien poistaminen ja niiden lukeminen on mahdollista
-23.5. | 3,5 h | jar-tiedosto luotu ja koodia tehty toimivammaksi
-Yth. | 28 h
+10.4. | 2,5 h | Jacoco test toimii ja checkstyle otettu käyttöön
+11.4. | 2 h | Tietokantaan tallennus aloitettu
+12.4. | 3,5 h | Tietokantaan tallenus saatu toimimaan
+15.4. | 2,5 h | Checkstyle kunnossa ja luotu lisää testejä
+16.4. | 2 h | Lisää testejä luotu
+17.4. | 1,5 h | Kurssien poistaminen ja niiden lukeminen on mahdollista
+23.4. | 3,5 h | jar-tiedosto luotu ja koodia tehty toimivammaksi
+24.4. | 2,5 h | graafinen käyttöliittymä aloitettu
+Yth. | 30,5 h
