@@ -251,6 +251,7 @@ public class CourseService {
         
             sn = Integer.parseInt(reader.nextLine());
             loggedIn = userDao.findOne(sn);
+            
         } catch (Exception ee) {
             return false;
         }        
