@@ -15,4 +15,5 @@ Päivä | Aika | Mitä tein
 23.4. | 3,5 h | Jar-tiedosto luotu ja koodia tehty toimivammaksi
 24.4. | 2,5 h | Graafinen käyttöliittymä aloitettu
 25.4. | 3 h | Graafista käyttöliittymää jatkettu
-Yth. | 33,5 h
+26.4. | 1 h | Graafinen käyttöliittymä toimii kohtuullisesti
+Yth. | 34,5 h
