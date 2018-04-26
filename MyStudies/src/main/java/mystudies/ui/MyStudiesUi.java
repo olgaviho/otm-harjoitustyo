@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
-import java.util.Scanner;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -32,7 +31,7 @@ import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.dao.DatabaseCourseUserDao;
 import mystudies.dao.DatabaseUserDao;
-import mystudies.domain.CourseService;
+import mystudies.domain.Course;
 import mystudies.domain.MyStudiesService;
 
 
@@ -91,7 +90,25 @@ public class MyStudiesUi extends Application {
         launch(MyStudiesUi.class);
         
     }
-   
+    
+    
+    public Node createCourseNode(Course course) {
+        HBox box = new HBox(10);
+        
+        String teksti = course.getId() + ", " + course.getName() + ", " + course.getDescription() + ", " + course.getCredits();
+        
+        Label courseLabel  = new Label(teksti);
+        courseLabel.setMinHeight(28);
+        courseLabel.setMinWidth(350);
+       
+                
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        box.setPadding(new Insets(0,5,0,5));
+        
+        box.getChildren().addAll(courseLabel, spacer);
+        return box;
+     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -128,6 +145,7 @@ public class MyStudiesUi extends Application {
             } else if (myStudiesService.login(id)){
                 
                 loginMessage.setText("");
+                redrawCourselist();
                 primaryStage.setScene(coursesScene); 
                 loginInput.setText("");
                 
@@ -149,7 +167,7 @@ public class MyStudiesUi extends Application {
        
         loginPane.getChildren().addAll(loginMessage, loginButton, inputPane, createNewUserButton);       
         
-        loginScene = new Scene(loginPane, 300, 250);    
+        loginScene = new Scene(loginPane, 400, 350);    
         
         
         
@@ -223,7 +241,7 @@ public class MyStudiesUi extends Application {
 
         
         newUserPane.getChildren().addAll(returnButton, userCreationMessage, newIdPane, newNamePane, createButton); 
-        newUserScene = new Scene(newUserPane, 300, 350);
+        newUserScene = new Scene(newUserPane, 400, 350);
         
         
         
@@ -235,12 +253,13 @@ public class MyStudiesUi extends Application {
         HBox menuPane = new HBox(10); 
         Region space = new Region();
         HBox.setHgrow(space, Priority.ALWAYS);
+        Label courseMessage = new Label();
         
         
         
         Button logoutButton = new Button("Logout"); 
         
-        menuPane.getChildren().addAll(menuLabel, space,logoutButton);
+        menuPane.getChildren().addAll(menuLabel, courseMessage, space,logoutButton);
 
         logoutButton.setOnAction(e->{
             
@@ -260,11 +279,20 @@ public class MyStudiesUi extends Application {
         newCourse.setOnAction(e->{
             primaryStage.setScene(newCourseScene);
             
+            
         });
+        
+        
+        courseNodes = new VBox(10);
+        courseNodes.setMaxWidth(280);
+        courseNodes.setMinWidth(280);
+        redrawCourselist();
+        
+        coursesScollbar.setContent(courseNodes);
 
         mainPane.setBottom(createForm);
         mainPane.setTop(menuPane);
-        coursesScene = new Scene(mainPane, 300, 350);
+        coursesScene = new Scene(mainPane, 400, 350);
         
       
         
@@ -336,38 +364,43 @@ public class MyStudiesUi extends Application {
                 courseCreationMessage.setTextFill(Color.RED); 
 
             } else if (myStudiesService.doesCourseExist(id)) {
-                courseCreationMessage.setText("This course id already exixts");
                 
                 if (myStudiesService.userHasCourse(id)) {
-                    // ilmoita että sulla on jo kurssi
-                    primaryStage.setScene(coursesScene);
+
+                    courseCreationMessage.setText("Id has to be unique");
+                    courseCreationMessage.setTextFill(Color.RED);
+                    courseMessage.setTextFill(Color.RED);
+
                 } else {
                     myStudiesService.createRelation(id);
-                    // ilmoita että kurssi id oli varattu, kurssi luotu
+                    courseCreationMessage.setText(""); 
+                    courseMessage.setText("You have a new course!");
+                    courseMessage.setTextFill(Color.GREEN); 
+                    redrawCourselist();
                     primaryStage.setScene(coursesScene);
                 }
                 
             } else if (courseName.length() <= 2 ) {
                 courseCreationMessage.setText("Name is too short");
                 courseCreationMessage.setTextFill(Color.RED); 
-                
-            
-                
-            } else
+                redrawCourselist();
+
+            } else {
                 
                 myStudiesService.createCourse(id, courseName, description, credits);
                 courseCreationMessage.setText("");                
-//                coursesMessage.setText("New Course created!");
-//                loginMessage.setTextFill(Color.GREEN);                
+                courseMessage.setText("New Course created!");
+                courseMessage.setTextFill(Color.GREEN);                
                 primaryStage.setScene(coursesScene);  
-        
+                redrawCourselist();
+            }
                  
         }); 
 
         
         coursePane.getChildren().addAll(returnCoursesButton, courseCreationMessage, newCourseIdPane, newCourseNamePane, newCourseDescriptionPane, newCourseCreditsPane, courseCreateButton); ;
 
-        newCourseScene = new Scene(coursePane, 300, 350);
+        newCourseScene = new Scene(coursePane, 400, 350);
         
          
         
@@ -378,6 +411,17 @@ public class MyStudiesUi extends Application {
         primaryStage.setScene(loginScene);
         primaryStage.show();
 
+    }
+    
+    
+    public void redrawCourselist() {
+        courseNodes.getChildren().clear(); 
+        
+        List<Course> courses = myStudiesService.getYourCourses();
+        courses.forEach(course->{
+            courseNodes.getChildren().add(createCourseNode(course));
+        });
+    
     }
 
 }

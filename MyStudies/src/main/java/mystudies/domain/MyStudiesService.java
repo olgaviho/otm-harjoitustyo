@@ -5,6 +5,8 @@
  */
 package mystudies.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.dao.DatabaseCourseUserDao;
@@ -132,6 +134,33 @@ public class MyStudiesService {
             return false;
         }
    
+    }
+    
+    public List<Course> getYourCourses() {
+        List<Course> courses = new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
+        int id = 0;
+        
+        try {
+            id = loggedIn.getId();
+        } catch (Exception e) {
+            return courses;
+        }
+ 
+        try {
+            ids = usersAndCourses.findAll(id); 
+            
+            for (Integer courseId : ids) {
+                Course course = courseDao.findOne(courseId);
+                courses.add(course);
+            }
+            
+        } catch (Exception e) {
+            return courses;
+        }
+  
+        return courses;
+        
     }
     
     
