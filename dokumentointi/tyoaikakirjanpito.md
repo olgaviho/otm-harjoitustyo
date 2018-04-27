@@ -16,4 +16,5 @@ Päivä | Aika | Mitä tein
 24.4. | 2,5 h | Graafinen käyttöliittymä aloitettu
 25.4. | 3 h | Graafista käyttöliittymää jatkettu
 26.4. | 1 h | Graafinen käyttöliittymä toimii kohtuullisesti
-Yth. | 34,5 h
+27.4. | 1,5 h | Hiottu arkkitehtuurikuvausta ja käyttöohjetta
+Yth. | 36,0 h
