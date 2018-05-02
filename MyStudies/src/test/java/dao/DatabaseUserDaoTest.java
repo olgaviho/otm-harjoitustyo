@@ -28,7 +28,6 @@ public class DatabaseUserDaoTest {
     
     @Before
     public void setUp() throws Exception {
-        Scanner reader = new Scanner(System.in);
         database = new Database("jdbc:sqlite:mystudiestest.db");        
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists users (id integer PRIMARY KEY, name varchar(20))");
