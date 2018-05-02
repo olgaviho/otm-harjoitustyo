@@ -5,13 +5,10 @@
  */
 package mystudies.ui;
 
-
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -54,9 +51,7 @@ public class MyStudiesUi extends Application {
     
     @Override
     public void init() throws Exception {
-        Properties properties = new Properties();
-
-        properties.load(new FileInputStream("config.properties"));
+        
         
         
         Database database = new Database("jdbc:sqlite:mycourses.db");
