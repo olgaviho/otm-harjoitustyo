@@ -5,6 +5,13 @@ import mystudies.domain.Course;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * This class saves the courses to the database
+ *
+ * @author olgaviho
+ */
+
+
 public class DatabaseCourseDao implements Dao<Course, Integer> {
     
     private Database database;
@@ -14,6 +21,15 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         this.database = database;
     
     }
+
+    
+    /**
+ * This method checks if the course already is in the database
+ *
+ * @param key the id of the course
+ * 
+ * @return course, if it exists, otherwise null
+ */
 
     @Override
     public Course findOne(Integer key) throws SQLException {
@@ -37,12 +53,26 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         return course;
      
     }
-
+/**
+ * This method does not work yet
+ *
+ * 
+ * 
+ * @return null
+ */
     @Override
     public List<Course> findAll() throws SQLException {
         return null; 
     }
-
+    
+    
+    /**
+ * This method checks if the course already is in the database, then it updates or saves the course
+ *
+ * @param course
+ * 
+ * @return course
+ */
     @Override
     public Course save(Course course) throws SQLException {
         Connection conn = database.getConnection();
@@ -66,6 +96,12 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         return newCourse;
     }
 
+    /**
+ * This method deletes the course
+ *
+ * @param key course id
+ * 
+ */
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = database.getConnection();

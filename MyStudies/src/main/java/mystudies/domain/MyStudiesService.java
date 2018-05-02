@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mystudies.domain;
 
 import java.util.ArrayList;
@@ -13,7 +9,7 @@ import mystudies.dao.DatabaseCourseUserDao;
 import mystudies.dao.DatabaseUserDao;
 
 /**
- *
+ * This class handles the logic
  * @author olgaviho
  */
 public class MyStudiesService {
@@ -30,7 +26,13 @@ public class MyStudiesService {
         this.usersAndCourses = usersAndCourses;
 
     }
-    
+        /**
+    * login
+    * 
+    * @param   id   users`s id
+    * 
+    * @return true if user exists, otherwise false
+    */ 
     public boolean login(int id) {
 
         try {
@@ -49,6 +51,14 @@ public class MyStudiesService {
         
     }
     
+    /**
+    * create a new user
+    * 
+    * @param   id   user`s id
+    * @param   name   user`s name
+    * 
+    * @return true if a new user was created to the system, otherwise false 
+    */ 
     public boolean createUser(int id, String name) {
         
         
@@ -66,14 +76,33 @@ public class MyStudiesService {
 
     }
     
+    /**
+    * logout
+    */ 
     public void logout() {
         this.loggedIn = null;
     }
     
+    /**
+    * get logged
+    * 
+    * @return the logged user
+    */ 
     public String getLogged() {
         return this.getLogged();
     } 
     
+    /**
+    * this method creates a new course
+    * 
+    * @param id id of the course
+    * @param name name of the course
+    * @param description description of the course
+    * @param credits credits of the course
+    * 
+    * 
+    * @return true, if a new course was created to the system and the user does not have it yet, otherwise false
+    */ 
     public boolean createCourse(int id, String name, String description, int credits) {
        
         
@@ -98,11 +127,16 @@ public class MyStudiesService {
         }
     }
     
-    public void createRelation(int id) {
+    /**
+    * creates a relation to the user and the course
+    * 
+    * @param the course id
+    */ 
+    public void createRelation(int courseid) {
         
         try {
             
-        usersAndCourses.save(loggedIn.getId(), id);
+        usersAndCourses.save(loggedIn.getId(), courseid);
         
         } catch (Exception e) {
                 
@@ -110,23 +144,35 @@ public class MyStudiesService {
 
     }
     
-    public boolean userHasCourse(int id) {
+    /**
+    * this method finds out if the user already has the course
+    * 
+    * @param the course id
+    * 
+    * @return false, if there wasn't relationship, otherwise true
+    */ 
+    public boolean userHasCourse(int courseid) {
         
         try {
             
-            return usersAndCourses.findOne(loggedIn.getId(), id);
+            return usersAndCourses.findOne(loggedIn.getId(), courseid);
         
         } catch (Exception e) {
             return true;
         }
-
     }
     
-    
-    public boolean doesCourseExist(int id) {
+    /**
+    * this method finds out if the course already exists
+    * 
+    * @param the course id
+    * 
+    * @return true, if the course already exists, otherwise false
+    */ 
+    public boolean doesCourseExist(int courseid) {
         
         try {
-        Course course = courseDao.findOne(id);
+        Course course = courseDao.findOne(courseid);
         
             return course != null;
         
@@ -136,6 +182,12 @@ public class MyStudiesService {
    
     }
     
+    /**
+    * this method gives user`s the courses
+    * 
+
+    * @return  a list of user`s courses
+    */ 
     public List<Course> getYourCourses() {
         List<Course> courses = new ArrayList<>();
         List<Integer> ids = new ArrayList<>();
@@ -148,17 +200,14 @@ public class MyStudiesService {
         }
  
         try {
-            ids = usersAndCourses.findAll(id); 
-            
+            ids = usersAndCourses.findAll(id);             
             for (Integer courseId : ids) {
                 Course course = courseDao.findOne(courseId);
                 courses.add(course);
-            }
-            
+            }            
         } catch (Exception e) {
             return courses;
-        }
-  
+        }  
         return courses;
         
     }

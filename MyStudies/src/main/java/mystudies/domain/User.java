@@ -2,7 +2,9 @@ package mystudies.domain;
 
 
 /**
-* käyttäjää edustava luokka
+ * This class represents a user
+ *
+ * @author olgaviho
  */
 
 public class User {
@@ -11,9 +13,7 @@ public class User {
     private String name;
 
     
-    public User(String name) {
-        this.name = name;       
-    }
+
     
     public User(int studentNumber, String name) {
         this.studentNumber = studentNumber;
@@ -21,16 +21,24 @@ public class User {
 
     }
     
-    public void setId(int id) {
-        this.studentNumber = id;       
-    }
-    
+
    
-    
+    /**
+ * This method gives the name
+ *
+ *@return returns the name
+ * 
+ */
     public String getName() {
         return name;
     }
 
+    /**
+ * This method gives the id
+ *
+ *@return returns the id
+ * 
+ */
     public int getId() {
         return studentNumber;
     }
