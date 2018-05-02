@@ -21,8 +21,9 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
 ### Testaus<h5>
 Testit suoritetaan komennolla
-
+```
 mvn test
+```
 
 Testikattavuusraportti luodaan komennolla
 
