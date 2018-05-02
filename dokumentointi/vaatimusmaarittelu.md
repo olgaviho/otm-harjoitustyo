@@ -12,6 +12,8 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali käyttäjä_.
 
 Sovellus koostuu neljästä eri näkymästä
 
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/n%C3%A4kym%C3%A4t.JPG)
+
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän kurssilistaukseen.
 
