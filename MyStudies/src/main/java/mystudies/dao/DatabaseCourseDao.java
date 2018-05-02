@@ -69,7 +69,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     /**
  * This method checks if the course already is in the database, then it updates or saves the course
  *
- * @param course
+ * @param course the course
  * 
  * @return course
  */

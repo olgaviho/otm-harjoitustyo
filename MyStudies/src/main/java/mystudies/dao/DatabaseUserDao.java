@@ -60,9 +60,9 @@ public class DatabaseUserDao implements Dao<User, Integer> {
     }
     
     /**
- * This method checks if the user already is in the database, updates it or saves the user
+ * This method checks if the user already is in the database, then it updates or saves the user
  *
- * @param user
+ * @param user the user
  * 
  * @return user with it's new information
  */

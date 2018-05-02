@@ -130,7 +130,7 @@ public class MyStudiesService {
     /**
     * creates a relation to the user and the course
     * 
-    * @param the course id
+    * @param courseid the course id
     */ 
     public void createRelation(int courseid) {
         
@@ -147,7 +147,7 @@ public class MyStudiesService {
     /**
     * this method finds out if the user already has the course
     * 
-    * @param the course id
+    * @param courseid the course id
     * 
     * @return false, if there wasn't relationship, otherwise true
     */ 
@@ -165,7 +165,7 @@ public class MyStudiesService {
     /**
     * this method finds out if the course already exists
     * 
-    * @param the course id
+    * @param courseid the course id
     * 
     * @return true, if the course already exists, otherwise false
     */ 

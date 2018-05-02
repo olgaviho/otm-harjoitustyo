@@ -16,7 +16,7 @@ public class UserTest {
     @Before
     public void setUp() {
         user = new User(1234,"nimi");
-        user2 = new User ("nimi");
+        
 
     }
     
@@ -32,10 +32,5 @@ public class UserTest {
        
     }
     
-    @Test
-    public void setIdWorks() {
-        user2.setId(12345);
-        assertEquals(12345, user2.getId());
-    }
-
+ 
 }

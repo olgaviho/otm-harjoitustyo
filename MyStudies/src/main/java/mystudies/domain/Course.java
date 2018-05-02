@@ -41,7 +41,7 @@ public class Course {
 /**
  * With this method it is possible to edit name
  *
- *@param newDescription new name for the course
+ *@param newName new name for the course
  * 
  */
     public void editName(String newName) {
