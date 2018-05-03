@@ -17,4 +17,6 @@ Päivä | Aika | Mitä tein
 25.4. | 3 h | Graafista käyttöliittymää jatkettu
 26.4. | 1 h | Graafinen käyttöliittymä toimii kohtuullisesti
 27.4. | 1,5 h | Hiottu arkkitehtuurikuvausta ja käyttöohjetta
-Yth. | 36,0 h
+2.5. | 2 h | Tein lisää testejä ja vaatimusmäärittelyn
+3.5. | 3,5 g | Lisäsin uusia ominaisuuksia esim. grade
+Yth. | 41,5 h
