@@ -19,4 +19,6 @@ Päivä | Aika | Mitä tein
 27.4. | 1,5 h | Hiottu arkkitehtuurikuvausta ja käyttöohjetta
 2.5. | 2 h | Tein lisää testejä ja vaatimusmäärittelyn
 3.5. | 3,5 h | Lisäsin uusia ominaisuuksia esim. grade
-Yth. | 41,5 h
+4.5. | 4 h | Lisäsin erikseen kurssin ja kurssisuorituksen luomisen
+7.5. | 3 h | Sain kurssien valinnat ComboBoxeiksi
+Yth. | 48,5 h
