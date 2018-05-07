@@ -3,6 +3,7 @@ package mystudies.dao;
 
 import mystudies.domain.Course;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
  * @param key the id of the course
  * 
  * @return course, if it exists, otherwise null
+ * @throws java.sql.SQLException
  */
 
     @Override
@@ -46,8 +48,9 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         }      
         
         Course course = new Course(rs.getInt("courseid"), rs.getString("name"), rs.getString("description"), rs.getInt("credits"));
-        stmt.close();
         rs.close();
+        stmt.close();
+        
         conn.close();
         
         return course;
@@ -62,7 +65,29 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
  */
     @Override
     public List<Course> findAll() throws SQLException {
-        return null; 
+        
+        List<Course> allCourses = new ArrayList<>();
+        
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM courses");
+        ArrayList<Integer> grades = new ArrayList<Integer>();
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            
+            Course course = new Course(rs.getInt("courseid"), rs.getString("name"), rs.getString("description"), rs.getInt("credits"));
+
+            allCourses.add(course);
+        }
+            
+
+        rs.close();
+        stmt.close();
+        
+        conn.close();
+        
+        return allCourses;
+ 
     }
     
     
@@ -74,26 +99,21 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
  * @return course
  */
     @Override
-    public Course save(Course course) throws SQLException {
+    public void save(Course course) throws SQLException {
         Connection conn = database.getConnection();
         int courseId = course.getId();
         String description = course.getDescription();      
-        Course newCourse = findOne(courseId);        
-        if (newCourse == null) {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO courses " + "(courseid, name, description, credits) " + "VALUES (?, ?, ?, ?)");
-            stmt.setInt(1, courseId);
-            stmt.setString(2, course.getName());           
-            stmt.setString(3, description); 
-            stmt.setInt(4, course.getCredits());
-            stmt.executeUpdate();
-            stmt.close();
-            Course newCourse2 = findOne(courseId);
-            conn.close();
-            return newCourse2;
-        }
-        
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO courses " + "(courseid, name, description, credits) " + "VALUES (?, ?, ?, ?)");
+        stmt.setInt(1, courseId);
+        stmt.setString(2, course.getName());           
+        stmt.setString(3, description); 
+        stmt.setInt(4, course.getCredits());
+        stmt.executeUpdate();
+        stmt.close();
+
         conn.close();
-        return newCourse;
+
+
     }
 
     /**

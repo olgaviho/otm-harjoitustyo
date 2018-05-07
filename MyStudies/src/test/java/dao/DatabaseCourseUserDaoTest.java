@@ -8,12 +8,12 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseUserDao;
+import mystudies.domain.Course;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,11 +33,9 @@ public class DatabaseCourseUserDaoTest {
     public void setUp() throws Exception {
         database = new Database("jdbc:sqlite:mystudiestest.db");        
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists usersandcourses (userid integer, courseid integer, foreign key(courseid) references courses(courseid), foreign key(userid) references users(id))");
+        PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists usersandcourses (userid integer, courseid integer, grade integer, foreign key(courseid) references courses(courseid), foreign key(userid) references users(id))");
         stmt.execute();        
         usersAndCoursesDao = new DatabaseCourseUserDao(database);
-
-
     }
     
    
@@ -49,11 +47,29 @@ public class DatabaseCourseUserDaoTest {
     
     @Test
     public void itIsPossibleToSaveUsersAndCourses() throws SQLException {
-        usersAndCoursesDao.save(1234,12);
+        usersAndCoursesDao.save(1234,12,5);
+ 
+        assertEquals(true,usersAndCoursesDao.findOne(1234,12));       
+
+
+    }
+    
+    @Test
+    public void itIsPossibleToFindAllGrades() throws SQLException {
+        usersAndCoursesDao.save(12345,14,4);
+        usersAndCoursesDao.save(12345,15,4);
+        List<Integer> twoGrades = usersAndCoursesDao.findAllGrades(12345);
+        assertEquals(2,twoGrades.size());
         
+    }
+    
+    @Test
+    public void itIsPossibleToFindAllCourses() throws SQLException {
+        usersAndCoursesDao.save(12346,14,4);
+        usersAndCoursesDao.save(12346,15,4);
+        List<Integer> twoGrades = usersAndCoursesDao.findAllIds(12346);
+        assertEquals(2,twoGrades.size());
         
-//       assertEquals(true,usersAndCoursesDao.findOne(1234,12));       
-//        tässä on nyt jotain pahaa häikkää kun ei toimi :/
     }
     
     

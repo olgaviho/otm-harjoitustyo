@@ -3,14 +3,13 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.domain.Course;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,6 +19,7 @@ public class DatabaseCourseDaoTest {
     Database database;
     DatabaseCourseDao courseDao;
     Course course;
+    Course course2;
 
     
     @Before
@@ -31,33 +31,37 @@ public class DatabaseCourseDaoTest {
         stmt.execute();        
         courseDao = new DatabaseCourseDao(database);
         course = new Course(1234, "nimi", "description", 10);
+        course2 = new Course(1235, "nimi2", "description2", 10);
   
     }
     
     @Test
-    public void tableCanBeEmpty() throws SQLException {                  
+    public void returnsNullWhenCantFindCourse() throws SQLException {                  
        assertEquals(null,courseDao.findOne(678));
     }
      
     @Test
-    public void itIsPossibleToSaveCourses() throws SQLException {
+    public void itIsPossibleToSaveAndFindCourses() throws SQLException {
         courseDao.save(course);
         assertEquals("nimi",courseDao.findOne(course.getId()).getName());
         
     }
-    
-    @Test
-    public void cantAddTheSameCourse() throws SQLException {
-        courseDao.save(course);
-        courseDao.save(course);
-        assertEquals("nimi",courseDao.findOne(course.getId()).getName());
-    }
-    
+        
     @Test
     public void itIsPossibleToDeleteCourses() throws SQLException {
         courseDao.delete(course.getId());
         assertEquals(null,courseDao.findOne(123));
     }
+    
+    @Test
+    public void itIsPossibleToFindAllCourses() throws SQLException {
+        courseDao.save(course2);
+        courseDao.save(course);
+        List<Course> twoCourses = courseDao.findAll();
+        assertEquals(2,twoCourses.size());
+        
+    }
+    
     
     @After
     public void tearDown() throws Exception {

@@ -5,7 +5,6 @@ import mystudies.domain.Course;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
-import mystudies.domain.User;
 
 
 
@@ -25,7 +24,13 @@ public class DatabaseCourseUserDao  {
         ResultSet rs = stmt.executeQuery();
         
         boolean hasOne = rs.next();
+        
+        rs.close();
+        stmt.close();
+        conn.close();
+        
         if (!hasOne) {
+            
             return false;
         } 
         
@@ -33,7 +38,7 @@ public class DatabaseCourseUserDao  {
         
     }
     
-    public List<Integer> findAll(Integer userkey) throws SQLException {
+    public List<Integer> findAllIds(Integer userkey) throws SQLException {
         Connection conn = database.getConnection(); 
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usersandcourses WHERE userid = ?"); 
         stmt.setInt(1, userkey);
@@ -48,18 +53,42 @@ public class DatabaseCourseUserDao  {
             ids.add(id);
         }
         
-        stmt.close();
         rs.close();
+        stmt.close();
+        
         conn.close();
         
         return ids; 
     }
     
-    public Course save(Integer userkey, Integer courseKey) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usersandcourses " + "(userid, courseid) " + "VALUES (?, ?)");
+    public List<Integer> findAllGrades(Integer userkey) throws SQLException {
+        Connection conn = database.getConnection(); 
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usersandcourses WHERE userid = ?"); 
         stmt.setInt(1, userkey);
-        stmt.setInt(2, courseKey);           
+        ResultSet rs = stmt.executeQuery();
+
+        
+        ArrayList<Integer> grades = new ArrayList<Integer>();
+
+        while (rs.next()) {
+
+            int grade =  rs.getInt("grade");
+            grades.add(grade);
+        }
+        
+        rs.close();
+        stmt.close();
+        
+        conn.close();
+        
+        return grades; 
+    }
+    public Course save(Integer userkey, Integer courseKey, Integer grade) throws SQLException {
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO usersandcourses " + "(userid, courseid, grade) " + "VALUES (?, ?, ?)");
+        stmt.setInt(1, userkey);
+        stmt.setInt(2, courseKey);
+        stmt.setInt(3, grade);
 
         stmt.executeUpdate();
 

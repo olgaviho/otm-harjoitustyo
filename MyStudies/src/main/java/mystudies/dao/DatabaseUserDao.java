@@ -26,6 +26,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
  * @param key the id of the user
  * 
  * @return user, if it exists, otherwise null
+ * @throws java.sql.SQLException
  */
     @Override
     public User findOne(Integer key) throws SQLException {
@@ -42,8 +43,9 @@ public class DatabaseUserDao implements Dao<User, Integer> {
             return null;
         }       
         User user = new User(rs.getInt("id"), rs.getString("name"));
-        stmt.close();
+        
         rs.close();
+        stmt.close();
         conn.close();
         return user;
     }
@@ -53,6 +55,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
  * 
  * 
  * @return null
+ * @throws java.sql.SQLException
  */
     @Override
     public List<User> findAll() throws SQLException {
@@ -64,30 +67,22 @@ public class DatabaseUserDao implements Dao<User, Integer> {
  *
  * @param user the user
  * 
- * @return user with it's new information
+ * 
+ * @throws java.sql.SQLException
  */
     @Override
-    public User save(User user) throws SQLException {
+    public void save(User user) throws SQLException {
         Connection conn = database.getConnection();
         int userId = user.getId();
         String name = user.getName();       
-        User newUser = findOne(userId);
-        
-        if (newUser == null) {
-            
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users " + "(id, name) " + "VALUES (?, ?)");
-            stmt.setInt(1, userId);           
-            stmt.setString(2, name);       
-            stmt.executeUpdate();
-            stmt.close();
-            return null;
-            
-        } else {
-
-            conn.close();       
-            return newUser;
-        }
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO users " + "(id, name) " + "VALUES (?, ?)");
+        stmt.setInt(1, userId);           
+        stmt.setString(2, name);       
+        stmt.executeUpdate();
+        stmt.close();
+        conn.close();
+  
     }
 
     
@@ -95,6 +90,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
  * This method deletes the user
  *
  * @param key user id
+ * @throws java.sql.SQLException
  * 
  */
     @Override

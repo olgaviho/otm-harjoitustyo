@@ -14,6 +14,7 @@ public class Course {
     private String description;
     private int credits;
     
+    
    
     
     public Course(int courseId, String name, String description, int credits) {
@@ -22,6 +23,7 @@ public class Course {
         this.name = name;
         this.description = description;
         this.credits = credits;
+    
 
     }
     
@@ -86,6 +88,7 @@ public class Course {
     public int getId() {
         return courseId;
     }
+   
     
     
 }
