@@ -59,8 +59,6 @@ public class MyStudiesUi extends Application {
     
 
     
-   
-    
     @Override
     public void init() throws Exception {
         
@@ -75,8 +73,7 @@ public class MyStudiesUi extends Application {
         DatabaseCourseUserDao usersAndCourses = new DatabaseCourseUserDao(database);
         this.myStudiesService = new MyStudiesService(courseDao, userDao, usersAndCourses);
         allSystemCourses = new ComboBox();
-        onlyUserCourses = new ComboBox();
-      
+        onlyUserCourses = new ComboBox();     
         
     }
     
@@ -93,7 +90,6 @@ public class MyStudiesUi extends Application {
         stmt3.execute();
     }
     
- 
      
     public static void main(String[] args) {
         launch(MyStudiesUi.class);
@@ -166,9 +162,7 @@ public class MyStudiesUi extends Application {
         
         loginScene = new Scene(loginPane, 450, 400);    
         
-        
-        
-        
+
         // luo kirjautumisnäytön
         
         VBox newUserPane = new VBox(10);
@@ -244,10 +238,7 @@ public class MyStudiesUi extends Application {
         
         newUserPane.getChildren().addAll(returnButton, userCreationMessage, newIdPane, newNamePane, createButton); 
         newUserScene = new Scene(newUserPane, 450, 400);
-        
-        
-        
-        
+
         // luo päänäkymän
         
         ScrollPane coursesScollbar = new ScrollPane();       
@@ -280,9 +271,7 @@ public class MyStudiesUi extends Application {
         HBox.setHgrow(spacer, Priority.ALWAYS);
         Button delete = new Button("Delete course");
         
-        
 
-        
         createForm.getChildren().addAll(delete, spaceri, newCompletedCourse, newCourse);
 
         
@@ -462,9 +451,6 @@ public class MyStudiesUi extends Application {
         Label newCourseCreditsLabel = new Label("Credits");
         newCourseCreditsLabel.setPrefWidth(100);
         newCourseCreditsPane.getChildren().addAll(newCourseCreditsLabel, newCourseCreditsInput);
-        
-        
-       
 
         
         Label courseCreationMessage = new Label();
@@ -578,13 +564,9 @@ public class MyStudiesUi extends Application {
 
             
             if (!mistake) {
-                courseDeleteMessage.setText("Id is not valid");
+                courseDeleteMessage.setText("Choose a course");
                 courseDeleteMessage.setTextFill(Color.RED); 
-                
-            } else if (!myStudiesService.userHasCourse(id)) {
-                    courseDeleteMessage.setText("You don't have this course");
-                    courseDeleteMessage.setTextFill(Color.RED);
-                    courseDeleteMessage.setTextFill(Color.RED);
+
 
             } else if (myStudiesService.deleteCourse(id)) {
                     courseDeleteMessage.setText(""); 
@@ -615,8 +597,7 @@ public class MyStudiesUi extends Application {
         
         deletePane.getChildren().addAll(coursesSceneButton, courseDeleteMessage, deleteIdPane, courseDeleteButton);
         deleteScene = new Scene(deletePane, 450, 400);
-        
-        
+
 
         // muuta
 
@@ -640,7 +621,6 @@ public class MyStudiesUi extends Application {
             gradeIndex = gradeIndex +1;
             
         }
-        
 
     }
     
@@ -652,7 +632,7 @@ public class MyStudiesUi extends Application {
         for (Course course: courses) {
             
             allCourses.add(createStringForCourse(course));
-            
+ 
             
         }
     
@@ -670,13 +650,10 @@ public class MyStudiesUi extends Application {
             userCourses.add(createStringForCourse(course));
             
         }        
-       
-        
+
         onlyUserCourses.setItems(FXCollections.observableArrayList(userCourses));
 
     }
-    
-    
 
     public void updateMean() {
         
@@ -684,12 +661,9 @@ public class MyStudiesUi extends Application {
         
         String creditsText = "Your mean: " + mean;        
         userMean.setText(creditsText);
-        
-        
+
     }
-    
-    
-    
+
     
     public Node createCourseNode(Course course, int grade) {
         HBox box = new HBox(10);
@@ -714,7 +688,5 @@ public class MyStudiesUi extends Application {
         String informations = course.getId() + ", " + course.getName();
         return informations;
     }
-    
-    
-    
+
 }

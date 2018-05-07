@@ -14,10 +14,10 @@ import mystudies.dao.DatabaseUserDao;
  */
 public class MyStudiesService {
     
-    private DatabaseCourseDao courseDao;
-    private DatabaseUserDao userDao;
+    private final DatabaseCourseDao courseDao;
+    private final DatabaseUserDao userDao;
     private User loggedIn;
-    private DatabaseCourseUserDao usersAndCourses;
+    private final DatabaseCourseUserDao usersAndCourses;
 
     
     public MyStudiesService(DatabaseCourseDao courseDao, DatabaseUserDao userDao, DatabaseCourseUserDao usersAndCourses) {
