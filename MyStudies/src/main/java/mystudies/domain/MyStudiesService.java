@@ -26,7 +26,9 @@ public class MyStudiesService {
         this.usersAndCourses = usersAndCourses;
 
     }
-        /**
+    
+    
+    /**
     * login
     * 
     * @param   id   users`s id
@@ -40,13 +42,10 @@ public class MyStudiesService {
             loggedIn = userDao.findOne(id);
         
         } catch (Exception e) {
+            
             return false;
         }
-
-        if (loggedIn == null) {
-            return false;
-        }               
-        return true;
+        return loggedIn != null;
     }
     
     /**
@@ -68,26 +67,25 @@ public class MyStudiesService {
         } catch (Exception e) {
             return false;
         }
-        
-
 
     }
     
     /**
     * logout
     */ 
-    public void logout() {
+    public void logOut() {
+        
         this.loggedIn = null;
     }
     
-    /**
-    * get logged
-    * 
-    * @return the logged user
-    */ 
-    public String getLogged() {
-        return this.getLogged();
-    } 
+    public User getLogged() {
+
+            return this.loggedIn;
+            
+        
+    }
+    
+ 
     
     /**
     * this method creates a new course
@@ -120,14 +118,17 @@ public class MyStudiesService {
     * 
     * @param courseid the course id
     */ 
-    public void createRelation(int courseid, int grade) {
+    public boolean createRelation(int courseid, int grade) {
         
         try {
             
         usersAndCourses.save(loggedIn.getId(), courseid, grade);
         
+        return true;
+        
         } catch (Exception e) {
                 
+            return false;
         }
 
     }
@@ -185,6 +186,7 @@ public class MyStudiesService {
         int id = 0;
         
         try {
+            
             id = loggedIn.getId();
             
 
@@ -198,7 +200,7 @@ public class MyStudiesService {
             
         } catch (Exception e) {
 
-            return courses;
+            return null;
         }  
         
         return courses;
@@ -213,7 +215,7 @@ public class MyStudiesService {
            
         } catch (Exception e) {
             
-            return allCourses;
+            return null;
         }  
         return allCourses;
     }
@@ -225,13 +227,13 @@ public class MyStudiesService {
          int id = 0;
         
         try {
+            
             id = loggedIn.getId();
             userGrades = usersAndCourses.findAllGrades(id); 
-            
-      
+
         } catch (Exception e) {
             
-            return userGrades;
+            return null;
         }  
         return userGrades;
     }
@@ -262,10 +264,15 @@ public class MyStudiesService {
 
         
         List<Course> courses = getYourCourses();
+        
+        if (courses == null) {
+            return 0.0;
+        }
+        
         double numberOfCourses = courses.size();
         
         if (numberOfCourses == 0) {
-            return 0;
+            return 0.0;
         }
         List<Integer> grades = getYourGrades();
         
@@ -281,8 +288,8 @@ public class MyStudiesService {
         
     }
     
-    double roundTwoDecimals(double d) {
-            DecimalFormat twoDForm = new DecimalFormat("#.##");
+    public double roundTwoDecimals(double d) {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(d));
     }
     

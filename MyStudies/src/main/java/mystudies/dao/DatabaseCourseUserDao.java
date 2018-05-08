@@ -82,7 +82,9 @@ public class DatabaseCourseUserDao  {
         conn.close();
         
         return grades; 
+        
     }
+    
     public Course save(Integer userkey, Integer courseKey, Integer grade) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO usersandcourses " + "(userid, courseid, grade) " + "VALUES (?, ?, ?)");

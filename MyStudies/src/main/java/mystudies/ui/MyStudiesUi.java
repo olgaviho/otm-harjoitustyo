@@ -219,7 +219,7 @@ public class MyStudiesUi extends Application {
                 userCreationMessage.setText("Id is not valid");
                 userCreationMessage.setTextFill(Color.RED); 
                 
-            } else if (myStudiesService.createUser(id, name)){
+            } else if (myStudiesService.createUser(id, name)) {
                 
                 userCreationMessage.setText("");                
                 loginMessage.setText("New user created!");
@@ -259,7 +259,7 @@ public class MyStudiesUi extends Application {
 
         logoutButton.setOnAction(e->{
             
-            myStudiesService.logout();
+            myStudiesService.logOut();
             courseMessage.setText("");
             primaryStage.setScene(loginScene);
         }); 
@@ -611,8 +611,20 @@ public class MyStudiesUi extends Application {
     public void redrawCourselist() {
         courseNodes.getChildren().clear(); 
         
+        
+        
+        
         List<Course> courses = myStudiesService.getYourCourses();
         List<Integer> courseGrades = myStudiesService.getYourGrades();
+        
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
+        
+        if (courseGrades == null) {
+            courseGrades = new ArrayList<>();
+        }
+        
         int gradeIndex = 0;
         
         for (Course course: courses) {
@@ -629,6 +641,10 @@ public class MyStudiesUi extends Application {
         allCourses.clear();
         List<Course> courses = myStudiesService.getAllCourses();
         
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
+        
         for (Course course: courses) {
             
             allCourses.add(createStringForCourse(course));
@@ -644,6 +660,10 @@ public class MyStudiesUi extends Application {
         userCourses.clear();
       
         List<Course> courses = myStudiesService.getYourCourses();
+        
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
         
         for (Course course: courses) {
             

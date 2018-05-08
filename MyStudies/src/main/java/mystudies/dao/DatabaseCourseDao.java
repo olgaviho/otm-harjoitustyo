@@ -62,15 +62,17 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
  * 
  * 
  * @return null
+ * 
+ * @throws java.sql.SQLException
  */
-    @Override
+
     public List<Course> findAll() throws SQLException {
         
         List<Course> allCourses = new ArrayList<>();
         
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM courses");
-        ArrayList<Integer> grades = new ArrayList<Integer>();
+        ArrayList<Integer> grades = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
@@ -95,8 +97,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
  * This method checks if the course already is in the database, then it updates or saves the course
  *
  * @param course the course
- * 
- * @return course
+     * @throws java.sql.SQLException
  */
     @Override
     public void save(Course course) throws SQLException {

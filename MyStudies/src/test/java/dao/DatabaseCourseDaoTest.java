@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.domain.Course;
@@ -24,7 +23,6 @@ public class DatabaseCourseDaoTest {
     
     @Before
     public void setUp() throws Exception {
-        Scanner reader = new Scanner(System.in);
         database = new Database("jdbc:sqlite:mystudiestest.db");        
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("CREATE TABLE if not exists courses (courseid integer PRIMARY KEY, name varchar(20), description varchar(20), credits integer)");

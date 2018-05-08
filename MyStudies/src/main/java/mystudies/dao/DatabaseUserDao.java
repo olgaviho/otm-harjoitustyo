@@ -49,18 +49,6 @@ public class DatabaseUserDao implements Dao<User, Integer> {
         conn.close();
         return user;
     }
-/**
- * This method does not work yet
- *
- * 
- * 
- * @return null
- * @throws java.sql.SQLException
- */
-    @Override
-    public List<User> findAll() throws SQLException {
-        return null;
-    }
     
     /**
  * This method checks if the user already is in the database, then it updates or saves the user

@@ -27,30 +27,7 @@ public class Course {
 
     }
     
-/**
- * With this method it is possible to edit description
- *
- *@param newDescription new description for the course
- * 
- */
 
-    public void editDescription(String newDescription) {
-        this.description = newDescription;
-        
-    }
-    
-    
-/**
- * With this method it is possible to edit name
- *
- *@param newName new name for the course
- * 
- */
-    public void editName(String newName) {
-        this.name = newName;
-        
-    }
-    
 /**
  * This method gives the credits
  *
