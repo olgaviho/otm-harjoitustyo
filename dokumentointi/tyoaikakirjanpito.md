@@ -22,4 +22,4 @@ Päivä | Aika | Mitä tein
 4.5. | 4 h | Lisäsin erikseen kurssin ja kurssisuorituksen luomisen
 7.5. | 3 h | Sain kurssien valinnat ComboBoxeiksi
 8.5. | 3 h | Testikattavuus saatu 100%
-Yth. | 48,5 h
+Yth. | 51,5 h
