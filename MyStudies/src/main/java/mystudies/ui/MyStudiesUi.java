@@ -34,8 +34,6 @@ import mystudies.dao.DatabaseUserDao;
 import mystudies.domain.Course;
 import mystudies.domain.MyStudiesService;
 
-
-
 /**
  *
  * @author olgaviho
@@ -58,12 +56,10 @@ public class MyStudiesUi extends Application {
     private ComboBox onlyUserCourses;
     
 
-    
     @Override
     public void init() throws Exception {
         
-        
-        
+
         Database database = new Database("jdbc:sqlite:mycourses.db");
         
         createTables(database);
@@ -96,14 +92,10 @@ public class MyStudiesUi extends Application {
         
     }
     
-    
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        //luo aloitusnäytön
-        
-        
-        
+        // creates loginScene
         
         VBox loginPane = new VBox(10);
         HBox inputPane = new HBox(10);
@@ -116,7 +108,7 @@ public class MyStudiesUi extends Application {
         
         Button loginButton = new Button("Login");
         
-        loginButton.setOnAction(e->{
+        loginButton.setOnAction(e-> {
             
             int id = 0;
             boolean nomistake = true;
@@ -132,7 +124,7 @@ public class MyStudiesUi extends Application {
                 loginMessage.setText("Id is not valid");
                 loginMessage.setTextFill(Color.RED);
                 
-            } else if (myStudiesService.login(id)){
+            } else if (myStudiesService.login(id)) {
                 
                 loginMessage.setText("");
                 redrawCourselist();
@@ -151,7 +143,7 @@ public class MyStudiesUi extends Application {
         
         Button createNewUserButton = new Button("Create new user");
         
-        createNewUserButton.setOnAction(e->{
+        createNewUserButton.setOnAction(e-> {
             loginInput.setText("");
             primaryStage.setScene(newUserScene);   
         }); 
@@ -163,7 +155,7 @@ public class MyStudiesUi extends Application {
         loginScene = new Scene(loginPane, 450, 400);    
         
 
-        // luo kirjautumisnäytön
+        // creates newUserScene
         
         VBox newUserPane = new VBox(10);
         
@@ -187,7 +179,7 @@ public class MyStudiesUi extends Application {
         Button returnButton = new Button("Return");
         returnButton.setPadding(new Insets(10));
         
-        returnButton.setOnAction(e->{
+        returnButton.setOnAction(e-> {
             primaryStage.setScene(loginScene);
             updateMean();
             
@@ -196,7 +188,7 @@ public class MyStudiesUi extends Application {
         
         createButton.setPadding(new Insets(10));
         
-        createButton.setOnAction(e->{
+        createButton.setOnAction(e-> {
             
             int id = 0;
             boolean mistake = true;
@@ -211,11 +203,11 @@ public class MyStudiesUi extends Application {
             String name = newNameInput.getText();
  
 
-            if (name.length()<=2 ) {
+            if (name.length() <= 2) {
                 userCreationMessage.setText("Name is too short");
                 userCreationMessage.setTextFill(Color.RED); 
 
-            } else if (!mistake){
+            } else if (!mistake) {
                 userCreationMessage.setText("Id is not valid");
                 userCreationMessage.setTextFill(Color.RED); 
                 
@@ -226,7 +218,6 @@ public class MyStudiesUi extends Application {
                 loginMessage.setTextFill(Color.GREEN);                
                 primaryStage.setScene(loginScene);  
                 updateMean();
-
 
             } else {
                 
@@ -239,7 +230,7 @@ public class MyStudiesUi extends Application {
         newUserPane.getChildren().addAll(returnButton, userCreationMessage, newIdPane, newNamePane, createButton); 
         newUserScene = new Scene(newUserPane, 450, 400);
 
-        // luo päänäkymän
+        // creates coursesScene
         
         ScrollPane coursesScollbar = new ScrollPane();       
         BorderPane mainPane = new BorderPane(coursesScollbar);
@@ -257,7 +248,7 @@ public class MyStudiesUi extends Application {
         
         menuPane.getChildren().addAll(courseMessage, spacer, userMean, logoutButton);
 
-        logoutButton.setOnAction(e->{
+        logoutButton.setOnAction(e-> {
             
             myStudiesService.logOut();
             courseMessage.setText("");
@@ -270,28 +261,25 @@ public class MyStudiesUi extends Application {
         Region spaceri = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
         Button delete = new Button("Delete course");
-        
 
         createForm.getChildren().addAll(delete, spaceri, newCompletedCourse, newCourse);
 
-        
-        newCourse.setOnAction(e->{
+        newCourse.setOnAction(e-> {
             primaryStage.setScene(newCourseScene);
         });
         
-        newCompletedCourse.setOnAction(e->{
+        newCompletedCourse.setOnAction(e-> {
             primaryStage.setScene(newCompletedCourseScene);
             redrawAllCourses();
   
         });
 
-        delete.setOnAction(e->{
+        delete.setOnAction(e-> {
             primaryStage.setScene(deleteScene);
         
             redrawUserCourses();
             
         });
-        
         
         courseNodes = new VBox(10);
         courseNodes.setMaxWidth(280);
@@ -299,8 +287,6 @@ public class MyStudiesUi extends Application {
         redrawCourselist();
         updateMean();
        
-        
-        
         coursesScollbar.setContent(courseNodes);
 
         mainPane.setBottom(createForm);
@@ -308,16 +294,13 @@ public class MyStudiesUi extends Application {
         coursesScene = new Scene(mainPane, 450, 400);
         
 
-        
-        // luo kurssisuoritusnäkymän, newCompletedCourseScene;
+        // creates newCompletedCourseScene;
         
         VBox completedCoursePane = new VBox(10);
 
         Button returnCoursesButton = new Button("Return"); 
         allCourses = new ArrayList<>();
         redrawAllCourses();
-        
-
 
         HBox newCompletedCourseIdPane = new HBox(10);
         newCompletedCourseIdPane.setPadding(new Insets(10));
@@ -326,7 +309,6 @@ public class MyStudiesUi extends Application {
         newCompletedCourseIdPane.getChildren().addAll(newCompletedCourseIdLabel, allSystemCourses);
 
 
-        
         HBox newCourseGradePane = new HBox(10);
         newCourseGradePane.setPadding(new Insets(10));
         TextField newCourseGradeInput = new TextField();
@@ -336,37 +318,27 @@ public class MyStudiesUi extends Application {
 
         
         Label completedCourseCreationMessage = new Label();
-      
-
-        Button completedCourseCreateButton = new Button("Create");
-        
-        completedCourseCreateButton.setOnAction(e->{
-            
-
+        Button completedCourseCreateButton = new Button("Create");        
+        completedCourseCreateButton.setOnAction(e-> {
             
             int id = 0;
             int grade = 0;
             String idAndCourseName = "";
             boolean exists = true;
-            boolean mistake = true;
+            boolean idOrGrdadeIsNotInteger = true;
             try {
             
-                
                 idAndCourseName = allSystemCourses.getValue().toString();
                 String[] parts = idAndCourseName.split(",");
-                String idString = parts[0];
-                
-                id = Integer.parseInt(idString);
-              
+                String idString = parts[0];                
+                id = Integer.parseInt(idString);             
                 grade = Integer.parseInt(newCourseGradeInput.getText());
                 
-            } catch (Exception ex) {
-              
-                 mistake= false;
+            } catch (Exception ex) {              
+                idOrGrdadeIsNotInteger = false;
             }
-            
-            
-            if (!mistake) {
+                       
+            if (!idOrGrdadeIsNotInteger) {
                 completedCourseCreationMessage.setText("Id or grade is not valid");
                 completedCourseCreationMessage.setTextFill(Color.RED); 
 
@@ -385,25 +357,20 @@ public class MyStudiesUi extends Application {
                     courseMessage.setTextFill(Color.GREEN); 
                     redrawCourselist();
                     updateMean();
-                   
-
 
                     newCourseGradeInput.setText("");
                     primaryStage.setScene(coursesScene);
                     
                 }
-                
-
 
             } else {
                 completedCourseCreationMessage.setText("This course does not exist");
-                completedCourseCreationMessage.setTextFill(Color.RED); 
-                
+                completedCourseCreationMessage.setTextFill(Color.RED);                 
             }
                  
         }); 
         
-        returnCoursesButton.setOnAction(e->{
+        returnCoursesButton.setOnAction(e-> {
 
             primaryStage.setScene(coursesScene);
             courseMessage.setText("");
@@ -413,24 +380,20 @@ public class MyStudiesUi extends Application {
         completedCoursePane.getChildren().addAll(returnCoursesButton, completedCourseCreationMessage, newCompletedCourseIdPane, newCourseGradePane, completedCourseCreateButton);
         newCompletedCourseScene = new Scene(completedCoursePane, 450, 400);
         
-        
-        
-//        Luo kurssinluomisnäkymän
+
+//      creates newCourseScene
 
         VBox coursePane = new VBox(10);
 
         Button returnCoursesSceneButton = new Button("Return"); 
 
-        
-        
         HBox newCourseIdPane = new HBox(10);
         newCourseIdPane.setPadding(new Insets(10));
         TextField newCourseIdInput = new TextField(); 
         Label newCourseIdLabel = new Label("Id");
         newCourseIdLabel.setPrefWidth(100);
         newCourseIdPane.getChildren().addAll(newCourseIdLabel, newCourseIdInput);
-        
-        
+                
         HBox newCourseNamePane = new HBox(10);
         newCourseNamePane.setPadding(new Insets(10));
         TextField newCourseNameInput = new TextField(); 
@@ -454,47 +417,40 @@ public class MyStudiesUi extends Application {
 
         
         Label courseCreationMessage = new Label();
-      
-
-        Button courseCreateButton = new Button("Create");
-        
-        courseCreateButton.setOnAction(e->{
+        Button courseCreateButton = new Button("Create");        
+        courseCreateButton.setOnAction(e-> {
             
             int id = 0;
             int credits = 0;
             boolean exists = true;
-            boolean mistake = true;
+            boolean idOrCreditsArentInteger = true;
             try {
             
                 id = Integer.parseInt(newCourseIdInput.getText());
                 credits = Integer.parseInt(newCourseCreditsInput.getText());
                 
             } catch (Exception ex) {
-                 mistake= false;
+                idOrCreditsArentInteger = false;
             }
             
             String courseName = newCourseNameInput.getText();
             String description = newCourseDescriptionInput.getText();
             
-            if (!mistake) {
+            if (!idOrCreditsArentInteger) {
                 courseCreationMessage.setText("Id or credits is not valid");
                 courseCreationMessage.setTextFill(Color.RED); 
 
             } else if (myStudiesService.doesCourseExist(id)) {
                 
-
-
                 courseCreationMessage.setText("Id has to be unique");
                 courseCreationMessage.setTextFill(Color.RED);
                 courseMessage.setTextFill(Color.RED);
 
                 
-            } else if (courseName.length() <= 2 ) {
+            } else if (courseName.length() <= 2) {
                 courseCreationMessage.setText("Name is too short");
                 courseCreationMessage.setTextFill(Color.RED); 
                 
-
-
             } else {
                 
                 myStudiesService.createCourse(id, courseName, description, credits);
@@ -503,39 +459,32 @@ public class MyStudiesUi extends Application {
                 courseMessage.setTextFill(Color.GREEN);                
                 primaryStage.setScene(coursesScene);  
 
-  
                 newCourseNameInput.setText("");
                 newCourseIdInput.setText("");
                 newCourseDescriptionInput.setText("");
                 newCourseCreditsInput.setText("");
-                
-
-            }
-                 
+            }                 
         }); 
 
         coursePane.getChildren().addAll(returnCoursesSceneButton, courseCreationMessage, newCourseIdPane, newCourseNamePane, newCourseDescriptionPane, newCourseCreditsPane, courseCreateButton);
-        newCourseScene = new Scene(coursePane, 450, 400);
+        newCourseScene = new Scene(coursePane, 450, 400);   
         
-        returnCoursesSceneButton.setOnAction(e->{
+        returnCoursesSceneButton.setOnAction(e-> {
 
             primaryStage.setScene(coursesScene);
             courseMessage.setText("");
             courseCreationMessage.setText("");
         }); 
-//        
-//        Luo deletoimisnäkymän
+       
+//       creates deleteCourseScene
 
         userCourses = new ArrayList<>();
         redrawUserCourses();
         VBox deletePane = new VBox(10);
-
         Button coursesSceneButton = new Button("Return"); 
         
         HBox deleteIdPane = new HBox(10);
         
-        
-
         deleteIdPane.setPadding(new Insets(10));
         Label deleteIdLabel = new Label("Choose course:");
         deleteIdLabel.setPrefWidth(100);
@@ -544,52 +493,47 @@ public class MyStudiesUi extends Application {
         Label courseDeleteMessage = new Label();
       
 
-        Button courseDeleteButton = new Button("Delete");
-        
-        courseDeleteButton.setOnAction(e->{
+        Button courseDeleteButton = new Button("Delete");        
+        courseDeleteButton.setOnAction(e-> {
             
             int id = 0;
-            String usersIdAndCourseName = "";
-            boolean mistake = true;
+            boolean chooseCourse = true;
             try {
             
-                usersIdAndCourseName = onlyUserCourses.getValue().toString();
+                String usersIdAndCourseName = onlyUserCourses.getValue().toString();
                 String[] parts = usersIdAndCourseName.split(",");
                 String idString = parts[0];
                 id = Integer.parseInt(idString);
                 
             } catch (Exception ex) {
-                 mistake= false;
+                chooseCourse = false;
             }
 
             
-            if (!mistake) {
+            if (!chooseCourse) {
                 courseDeleteMessage.setText("Choose a course");
                 courseDeleteMessage.setTextFill(Color.RED); 
 
 
             } else if (myStudiesService.deleteCourse(id)) {
-                    courseDeleteMessage.setText(""); 
-                    courseMessage.setText("Course deleted!");
-                    courseMessage.setTextFill(Color.GREEN); 
+                courseDeleteMessage.setText(""); 
+                courseMessage.setText("Course deleted!");
+                courseMessage.setTextFill(Color.GREEN); 
                  
-                    updateMean();
-                    redrawAllCourses();
+                updateMean();
+                redrawAllCourses();
             
-                    primaryStage.setScene(coursesScene);
+                primaryStage.setScene(coursesScene);
                     
             } else {
                 
-                    courseDeleteMessage.setText("Fail");
-                    courseDeleteMessage.setTextFill(Color.RED);
-                    courseDeleteMessage.setTextFill(Color.RED);
-                
-            }
-                 
+                courseDeleteMessage.setText("Fail");
+                courseDeleteMessage.setTextFill(Color.RED);
+                courseDeleteMessage.setTextFill(Color.RED);                
+            }                 
         }); 
 
-        coursesSceneButton.setOnAction(e->{
-
+        coursesSceneButton.setOnAction(e-> {
             primaryStage.setScene(coursesScene);
             courseMessage.setText("");
             courseDeleteMessage.setText("");
@@ -598,21 +542,16 @@ public class MyStudiesUi extends Application {
         deletePane.getChildren().addAll(coursesSceneButton, courseDeleteMessage, deleteIdPane, courseDeleteButton);
         deleteScene = new Scene(deletePane, 450, 400);
 
-
-        // muuta
+        // other things
 
         primaryStage.setTitle("MyStudies");
         primaryStage.setScene(loginScene);
         primaryStage.show();
-
     }
  
 
     public void redrawCourselist() {
         courseNodes.getChildren().clear(); 
-        
-        
-        
         
         List<Course> courses = myStudiesService.getYourCourses();
         List<Integer> courseGrades = myStudiesService.getYourGrades();
@@ -625,15 +564,11 @@ public class MyStudiesUi extends Application {
             courseGrades = new ArrayList<>();
         }
         
-        int gradeIndex = 0;
-        
-        for (Course course: courses) {
-            
+        int gradeIndex = 0;        
+        for (Course course: courses) {            
             courseNodes.getChildren().add(createCourseNode(course, courseGrades.get(gradeIndex)));
-            gradeIndex = gradeIndex +1;
-            
+            gradeIndex = gradeIndex + 1;            
         }
-
     }
     
     public void redrawAllCourses() {
@@ -647,11 +582,8 @@ public class MyStudiesUi extends Application {
         
         for (Course course: courses) {
             
-            allCourses.add(createStringForCourse(course));
- 
-            
-        }
-    
+            allCourses.add(createStringForCourse(course)); 
+        }    
         allSystemCourses.setItems(FXCollections.observableArrayList(allCourses));
         
     }
@@ -663,28 +595,20 @@ public class MyStudiesUi extends Application {
         
         if (courses == null) {
             courses = new ArrayList<>();
-        }
-        
-        for (Course course: courses) {
-            
-            userCourses.add(createStringForCourse(course));
-            
+        }       
+        for (Course course: courses) {            
+            userCourses.add(createStringForCourse(course));            
         }        
-
         onlyUserCourses.setItems(FXCollections.observableArrayList(userCourses));
-
     }
 
     public void updateMean() {
         
-        double mean = myStudiesService.getMean();
-        
+        double mean = myStudiesService.getMean();        
         String creditsText = "Your mean: " + mean;        
         userMean.setText(creditsText);
-
     }
 
-    
     public Node createCourseNode(Course course, int grade) {
         HBox box = new HBox(10);
         
@@ -693,15 +617,14 @@ public class MyStudiesUi extends Application {
         Label courseLabel  = new Label(teksti);
         courseLabel.setMinHeight(28);
         courseLabel.setMinWidth(350);
-       
-                
+             
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        box.setPadding(new Insets(0,5,0,5));
+        box.setPadding(new Insets(0, 5, 0, 5));
         
         box.getChildren().addAll(courseLabel, spacer);
         return box;
-     }
+    }
     
     public String createStringForCourse(Course course) {
         

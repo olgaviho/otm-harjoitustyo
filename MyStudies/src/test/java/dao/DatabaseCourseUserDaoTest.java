@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
  *
  * @author olgaviho
  */
+
 public class DatabaseCourseUserDaoTest {
     
-    Database database;
-  
+    Database database;  
     DatabaseCourseUserDao usersAndCoursesDao;
     
    
@@ -33,20 +33,15 @@ public class DatabaseCourseUserDaoTest {
         usersAndCoursesDao = new DatabaseCourseUserDao(database);
     }
     
-   
-
     @Test
     public void returnsFalseIfThereIsNotRealtion() throws SQLException {                  
-       assertEquals(false,usersAndCoursesDao.findOne(12, 678));
+        assertEquals(false,usersAndCoursesDao.findOne(12, 678));
     }
     
     @Test
     public void itIsPossibleToSaveUsersAndCourses() throws SQLException {
-        usersAndCoursesDao.save(1234, 12, 5);
- 
+        usersAndCoursesDao.save(1234, 12, 5); 
         assertEquals(true,usersAndCoursesDao.findOne(1234, 12));       
-
-
     }
     
     @Test
@@ -54,27 +49,24 @@ public class DatabaseCourseUserDaoTest {
         usersAndCoursesDao.save(12345, 14, 4);
         usersAndCoursesDao.save(12345, 15, 4);
         List<Integer> twoGrades = usersAndCoursesDao.findAllGrades(12345);
-        assertEquals(2,twoGrades.size());
-        
+        assertEquals(2,twoGrades.size());        
     }
     
     @Test
     public void itIsPossibleToFindAllCourses() throws SQLException {
-        usersAndCoursesDao.save(12346,14,4);
-        usersAndCoursesDao.save(12346,15,4);
+        usersAndCoursesDao.save(12346, 14, 4);
+        usersAndCoursesDao.save(12346, 15, 4);
         List<Integer> twoGrades = usersAndCoursesDao.findAllIds(12346);
-        assertEquals(2, twoGrades.size());
-        
+        assertEquals(2, twoGrades.size());        
     }
     
     @Test
     public void itIsPossibleToDeleteCourses() throws SQLException {
         usersAndCoursesDao.save(12347, 16, 3);
         usersAndCoursesDao.deleteCourse(16, 12347);
-        assertEquals(false,usersAndCoursesDao.findOne(12347,16)); 
+        assertEquals(false,usersAndCoursesDao.findOne(12347, 16)); 
     }
-    
-    
+        
     @After
     public void tearDown() throws SQLException {
         Connection conn = database.getConnection();  
@@ -82,6 +74,5 @@ public class DatabaseCourseUserDaoTest {
         stmt.executeUpdate();
         stmt.close();
         conn.close();
-    }
-     
+    }     
 }

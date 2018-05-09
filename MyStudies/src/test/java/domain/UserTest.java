@@ -13,20 +13,15 @@ public class UserTest {
     @Before
     public void setUp() {
         user = new User(1234,"nimi");
-
     }
     
     @Test
     public void getNameWorks() {
-        assertEquals("nimi", user.getName());
-        
+        assertEquals("nimi", user.getName());        
     }
     
     @Test
     public void getIdWorks() {
-        assertEquals(1234, user.getId());
-       
-    }
-    
- 
+        assertEquals(1234, user.getId());       
+    }     
 }

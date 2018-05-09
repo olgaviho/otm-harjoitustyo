@@ -29,8 +29,7 @@ public class DatabaseCourseDaoTest {
         stmt.execute();        
         courseDao = new DatabaseCourseDao(database);
         course = new Course(1234, "nimi", "description", 10);
-        course2 = new Course(1235, "nimi2", "description2", 10);
-  
+        course2 = new Course(1235, "nimi2", "description2", 10);  
     }
     
     @Test
@@ -41,8 +40,7 @@ public class DatabaseCourseDaoTest {
     @Test
     public void itIsPossibleToSaveAndFindCourses() throws SQLException {
         courseDao.save(course);
-        assertEquals("nimi",courseDao.findOne(course.getId()).getName());
-        
+        assertEquals("nimi",courseDao.findOne(course.getId()).getName());       
     }
         
     @Test
@@ -52,15 +50,13 @@ public class DatabaseCourseDaoTest {
     }
     
     @Test
-    public void itIsPossibleToFindAllCourses() throws SQLException {
+    public void findAllCoursesFindsAllCourses() throws SQLException {
         courseDao.save(course2);
         courseDao.save(course);
         List<Course> twoCourses = courseDao.findAll();
-        assertEquals(2,twoCourses.size());
-        
+        assertEquals(2,twoCourses.size());        
     }
-    
-    
+        
     @After
     public void tearDown() throws Exception {
         Connection conn = database.getConnection();  
@@ -69,8 +65,4 @@ public class DatabaseCourseDaoTest {
         stmt.close();
         conn.close();
     }
-    
-    
-
-
 }

@@ -14,9 +14,6 @@ public class Course {
     private String description;
     private int credits;
     
-    
-   
-    
     public Course(int courseId, String name, String description, int credits) {
         
         this.courseId = courseId;
@@ -24,48 +21,46 @@ public class Course {
         this.description = description;
         this.credits = credits;
     
-
     }
     
 
-/**
- * This method gives the credits
- *
- *@return returns the credits
- * 
- */
+    /**
+    * This method gives the credits
+    *
+    *@return returns the credits
+     */
+    
     public int getCredits() {
-        return credits;
-        
+        return credits;        
     }
-/**
- * This method gives the name
- *
- *@return returns the name
- * 
- */
+    
+    /**
+    * This method gives the name
+    *
+    *@return returns the name
+    */
+    
     public String getName() {
         return name;
     }
+    
     /**
- * This method gives the description
- *
- *@return returns the description
- * 
- */
+    * This method gives the description
+    *
+    *@return returns the description
+    */
+    
     public String getDescription() {
         return description;        
     }
+    
     /**
- * This method gives the id
- *
- *@return returns the id
- * 
- */
+    * This method returns the id
+    *
+    *@return returns the id
+    */
+    
     public int getId() {
         return courseId;
     }
-   
-    
-    
 }
