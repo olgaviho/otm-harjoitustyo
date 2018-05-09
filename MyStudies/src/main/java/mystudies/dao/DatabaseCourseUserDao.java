@@ -5,13 +5,36 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+/**
+ * This class saves user's ids and course's ids.
+ *
+ * @author olgaviho
+ */
+
 
 public class DatabaseCourseUserDao  {
     private final Database database;
+    
+     /**
+     * This creates the CourseUserDao.
+     * 
+     * @param database database that will be used
+     */
      
     public DatabaseCourseUserDao(Database database) {
         this.database = database;
     }
+    
+    /**
+     * This method checks if the ids already are in the database.
+     *
+     * @param userkey the id of the user
+     * @param coursekey the id of the course
+     * @return true, if the combination already is in the database, else false
+     * 
+     * @throws java.sql.SQLException if there is a problem in the database
+     * 
+     */
      
     public boolean findOne(Integer userkey, Integer coursekey) throws SQLException {
     
@@ -27,6 +50,16 @@ public class DatabaseCourseUserDao  {
         
         return hasOne;        
     }
+    
+    /**
+    * This method returns a list, where are all courses, that the user has.
+    *
+    * @param userkey id of the user
+    * @return courses in a list
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
     
     public List<Integer> findAllIds(Integer userkey) throws SQLException {
         
@@ -48,6 +81,16 @@ public class DatabaseCourseUserDao  {
         return ids; 
     }
     
+    /**
+    * This method returns a list, where are all grades, that the user has.
+    *
+    * @param userkey id of the user
+    * @return grades in a list
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
+    
     public List<Integer> findAllGrades(Integer userkey) throws SQLException {
         Connection conn = database.getConnection(); 
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usersandcourses WHERE userid = ?"); 
@@ -66,6 +109,17 @@ public class DatabaseCourseUserDao  {
         return grades;         
     }
     
+    /**
+    * This method saves the combination.
+    *
+     * @param userkey id for the user
+     * @param courseKey id for the course
+     * @param grade grade of the course
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
+    
     public void save(Integer userkey, Integer courseKey, Integer grade) throws SQLException {
         
         Connection conn = database.getConnection();
@@ -77,6 +131,16 @@ public class DatabaseCourseUserDao  {
         stmt.close();
         conn.close();       
     }
+    
+    /**
+    * This method deletes a combination.
+    *
+    * @param coursekey the id of the course
+    * @param userid the id of the user
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
     
     public void deleteCourse(Integer coursekey, Integer userid) throws SQLException {
         

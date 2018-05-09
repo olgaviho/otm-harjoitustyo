@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class saves courses to the database
+ * This class saves courses to the database.
  *
  * @author olgaviho
  */
@@ -16,6 +16,13 @@ import java.util.List;
 public class DatabaseCourseDao implements Dao<Course, Integer> {
     
     private Database database;
+    
+    /**
+     * This creates the course dao.
+     * 
+     * @param database database that will used
+     */
+    
         
     public DatabaseCourseDao(Database database) {
         this.database = database;
@@ -24,12 +31,14 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
 
     
     /**
-    * This method checks if the course already is in the database
-    *
-    * @param key the id of the course 
-    * @return course, if it exists, otherwise null
-    * @throws java.sql.SQLException
-    */
+     * This method checks if the course already is in the database.
+     *
+     * @param key the id of the course 
+     * @return course, if it exists, otherwise null
+     * 
+     * @throws java.sql.SQLException if there is a problem in the database
+     * 
+     */
 
     @Override
     public Course findOne(Integer key) throws SQLException {
@@ -54,11 +63,14 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         return course;
      
     }
+    
     /**
-    * This method returns all courses, that are in the database
+    * This method returns a list, where are all courses, that are in the database.
     *
-    * @return null
-    * @throws java.sql.SQLException
+    * @return courses in a list
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
     */
 
     public List<Course> findAll() throws SQLException {
@@ -82,10 +94,12 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     
     
     /**
-    * This method checks if the course already is in the database, then it updates or saves the course
+    * This method saves the course.
     *
     * @param course that course will be saved
-    * @throws java.sql.SQLException
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
     */
     
     @Override
@@ -104,10 +118,12 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     }
 
     /**
-    * This method deletes the course
+    * This method deletes a course.
     *
     * @param key course id
-    * @throws java.sql.SQLException
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
     */
     
     public void delete(Integer key) throws SQLException {

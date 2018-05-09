@@ -4,7 +4,7 @@ import java.sql.*;
 import mystudies.domain.User;
 
 /**
- * This class saves the users to the database
+ * This class saves the users to the database.
  *
  * @author olgaviho
  */
@@ -12,17 +12,23 @@ import mystudies.domain.User;
 public class DatabaseUserDao implements Dao<User, Integer> {
     
     private Database database;
+    
+    /**
+     * This creates the UserDao.
+     * 
+     * @param database database that will be used
+     */
 
     public DatabaseUserDao(Database database) {
         this.database = database;
     }
 
     /**
-    * This method checks if the user already is in the database
+    * This method checks if the user already is in the database.
     *
     * @param key the id of the user
     * @return user, if it is in the database, otherwise null
-    * @throws java.sql.SQLException
+    * @throws java.sql.SQLException if there is a problem in the database
     */
     
     @Override
@@ -45,10 +51,10 @@ public class DatabaseUserDao implements Dao<User, Integer> {
     }
     
     /**
-    * This method checks if the user already is in the database, then it updates or saves the user
+    * This method checks if the user already is in the database, then it updates or saves the user.
     *
     * @param user the user
-    * @throws java.sql.SQLException
+    * @throws java.sql.SQLException if there is a problem in the database
     */
     
     @Override

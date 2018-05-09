@@ -9,7 +9,8 @@ import mystudies.dao.DatabaseCourseUserDao;
 import mystudies.dao.DatabaseUserDao;
 
 /**
- * This class handles the logic
+ * This class handles the logic.
+ * 
  * @author olgaviho
  */
 
@@ -19,20 +20,28 @@ public class MyStudiesService {
     private final DatabaseUserDao userDao;
     private User loggedIn;
     private final DatabaseCourseUserDao usersAndCourses;
+    
+    /**
+     * This creates the service.
+     * 
+     * @param courseDao this saves the courses
+     * @param userDao this saves the users
+     * @param usersAndCourses this saves user's ids and ids of the courses
+     */
 
     
     public MyStudiesService(DatabaseCourseDao courseDao, DatabaseUserDao userDao, DatabaseCourseUserDao usersAndCourses) {
         this.userDao = userDao;
         this.courseDao = courseDao;
         this.usersAndCourses = usersAndCourses;
-
     }
         
     /**
-    * login
+    * Login to the service.
     * 
-    * @param   id   users`s id
+    * @param   id   users's id
     * @return true if user exists, otherwise false
+    * 
     */ 
     
     public boolean login(int id) {
@@ -47,7 +56,7 @@ public class MyStudiesService {
     }
     
     /**
-    * create a new user
+    * Creates a new user.
     * 
     * @param   id   user`s id
     * @param   name   user`s name
@@ -67,7 +76,7 @@ public class MyStudiesService {
     }
     
     /**
-    * logout
+    * This method sets the logged user to null.
     */ 
     
     public void logOut() {
@@ -75,19 +84,24 @@ public class MyStudiesService {
         this.loggedIn = null;
     }
     
+    /**
+    * This method return the logged user.
+    * @return the logged user
+    */ 
+    
     public User getLogged() {
 
         return this.loggedIn;
     }
 
     /**
-    * this method creates a new course
+    * this method creates a new course.
     * 
     * @param id id of the course
     * @param name name of the course
     * @param description description of the course
     * @param credits credits of the course
-    * @return true, if a new course was created to the system and the user does not have it yet, otherwise false
+    * @return true, if a new course was created to the system, otherwise false
     */ 
     
     public boolean createCourse(int id, String name, String description, int credits) {
@@ -103,10 +117,11 @@ public class MyStudiesService {
     }
     
     /**
-    * creates a relation to the user and the course
+    * Creates a relationship between the user and the course.
     * 
     * @param courseid the course id
     * @param grade the grade of the course
+    * @return true if the relation was created, else false
     */ 
     
     public boolean createRelation(int courseid, int grade) {
@@ -121,11 +136,11 @@ public class MyStudiesService {
     }
     
     /**
-    * this method finds out if the user already has the course
+    * This method finds out if the user already has the course.
     * 
     * @param courseid the course id
     * 
-    * @return false, if there wasn't relationship, otherwise true
+    * @return true, if there was already a relationship, otherwise false
     */ 
     
     public boolean userHasCourse(int courseid) {
@@ -138,10 +153,9 @@ public class MyStudiesService {
     }
     
     /**
-    * this method finds out if the course already exists
+    * This method finds out if the course already exists.
     * 
     * @param courseid the course id
-    * 
     * @return true, if the course already exists, otherwise false
     */ 
     
@@ -157,10 +171,9 @@ public class MyStudiesService {
     }
     
     /**
-    * this method gives user`s the courses
+    * This method gives the courses of the user.
     * 
-
-    * @return  a list of user`s courses
+    * @return  a list of user`s courses or null, if there was a problem in the database
     */ 
     
     public List<Course> getYourCourses() {
@@ -183,6 +196,12 @@ public class MyStudiesService {
         return courses;        
     }
     
+    /**
+    * This method returns all courses.
+    * 
+    * @return  courses in a list or null, if there was a problem in the database
+    */ 
+    
     public List<Course> getAllCourses() {
         
         List<Course> allCourses = new ArrayList<>();
@@ -194,19 +213,31 @@ public class MyStudiesService {
         return allCourses;
     }
     
+     /**
+    * This method gives the grades of the user.
+    * 
+    * @return  a list of user`s grades or null, if there was a problem in the database
+    */ 
+    
     public List<Integer> getYourGrades() {
         
-        List<Integer> userGrades = new ArrayList<>();
         try {
             
             int id = loggedIn.getId();
-            userGrades = usersAndCourses.findAllGrades(id); 
+            List<Integer>  userGrades = usersAndCourses.findAllGrades(id); 
+            return userGrades;
 
         } catch (Exception e) {            
             return null;
         }  
-        return userGrades;
     }
+    
+    /**
+    * This method deletes the course.
+    * 
+    * @param courseid id of the course
+    * @return true, if a new course was deleted, otherwise false
+    */
     
 
     public boolean deleteCourse(int courseid) {
@@ -219,6 +250,12 @@ public class MyStudiesService {
             return false;
         }
     }
+    
+    /**
+    * This method calculates mean of user's courses.
+    * 
+    * @return mean of user's courses or 0 if user doesn't have any courses
+    */ 
     
     
     public double getMean() {
@@ -242,6 +279,13 @@ public class MyStudiesService {
         mean = roundTwoDecimals(mean);
         return mean;        
     }
+    
+    /**
+    * This method rounds decimals to two decimal places.
+    * 
+    * @param d decimal that method will round
+    * @return new decimal
+    */ 
     
     public double roundTwoDecimals(double d) {
         DecimalFormat twoDForm = new DecimalFormat("#.##");

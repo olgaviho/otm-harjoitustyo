@@ -2,7 +2,7 @@
 package mystudies.domain;
 
 /**
- * This class represents a course
+ * This class represents a course.
  *
  * @author olgaviho
  */
@@ -13,6 +13,15 @@ public class Course {
     private String name;
     private String description;
     private int credits;
+    
+    /**
+     * This creates the course.
+     * 
+     * @param courseId id of the course
+     * @param name name of the course
+     * @param description description of the course
+     * @param credits credits of the course
+     */
     
     public Course(int courseId, String name, String description, int credits) {
         
@@ -25,17 +34,17 @@ public class Course {
     
 
     /**
-    * This method gives the credits
+    * This method gives the credits.
     *
-    *@return returns the credits
-     */
+    * @return returns the credits
+    */
     
     public int getCredits() {
         return credits;        
     }
     
     /**
-    * This method gives the name
+    * This method gives the name.
     *
     *@return returns the name
     */
@@ -45,7 +54,7 @@ public class Course {
     }
     
     /**
-    * This method gives the description
+    * This method gives the description.
     *
     *@return returns the description
     */
@@ -55,7 +64,7 @@ public class Course {
     }
     
     /**
-    * This method returns the id
+    * This method returns the id.
     *
     *@return returns the id
     */
