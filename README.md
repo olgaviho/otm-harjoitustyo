@@ -12,6 +12,8 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
 [Arkkitehtuurikuvaus](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuurikuvaus.md)
 
+[Testausdokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Testausdokumentti.md)
+
 
 ## Releaset<h3>
 [Releaset](https://github.com/olgaviho/otm-harjoitustyo/releases)
