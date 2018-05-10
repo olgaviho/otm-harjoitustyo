@@ -10,10 +10,9 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali käyttäjä_.
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä
+Sovellus koostuu viidestä eri näkymästä
 
-![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/n%C3%A4kym%C3%A4t.JPG)
-
+![alt text](osoite uuteen kuvaan)
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän kurssilistaukseen.
 
@@ -22,12 +21,12 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 ### Ennen kirjautumista
 
 - Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
-  - Käyttäjän id:n täytyy olla uniikki ja pituudeltaan vähintään 1 merkki. ID:n tulee sisältää ainoastaan numeroita.
-  - Nimi taas voi sisältää myös kirjaimia
+  - Käyttäjän id:n täytyy olla uniikki ja pituudeltaan vähintään 1 merkki. ID:n tulee sisältää ainoastaan numeroita
+  - Nimi taas voi sisältää myös kirjaimia ja sen pitää olla vähintään kahden merkin mittainen
 
 - Käyttäjä voi kirjautua sovellukseen
-  - Kirjautuminen kun syöttää id:n näkymään
-  - Jos käyttäjää ei olemassa, pitäisi siitä tulla jokin ilmoitus
+  - Kirjautuminen onnistuu, kun syöttää id:n näkymään
+  - Jos käyttäjää ei olemassa järjestelmässä, pitäisi siitä tulee ilmoitus
 
 ### Kirjautumisen jälkeen
 
@@ -35,6 +34,12 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - Käyttäjä voi luoda uuden kurssin
   - Luodulla kurssilla tulee olla uniikki id ja useammalla käyttjällä voi olla sama kurssi
+  
+- Käyttäjä voi luoda uuden kurssisuorituksen
+  - Kurssisuorituksen voi luoda vain sellaiseen kurssiin, jota käyttäjällä ei vielä ole. Kurssisuoritukseen liittyy arvosana.
+  - Ohjelma laskee automaattisesti keskiarvon käyttäjän suorittamista kursseista
+  
+- Käyttäjä voi poistaa kurssisuorituksen
 
 - Käyttäjä voi kirjautua ulos järjestelmästä
 
@@ -42,5 +47,5 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 Perusversion jälkeen harjoitustyötä voin täydentää seuraavilla asioilla:
 
-- Kurssien poistaminen
-- Käyttäjätunnuksen (ja siihen liittyvien kurssien) poisto
+- Käyttäjätunnuksen (ja siihen liittyvien kurssisuorituksien) poisto
+- Lisää statistiikkaa käyttäjän suorittamista kursseista 
