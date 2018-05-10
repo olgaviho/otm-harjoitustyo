@@ -33,7 +33,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 - Käyttäjä näkee omat kurssit, jotka hän on suorittanut
 
 - Käyttäjä voi luoda uuden kurssin
-  - Luodulla kurssilla tulee olla uniikki id ja useammalla käyttjällä voi olla sama kurssi
+  - Luodulla kurssilla tulee olla uniikki id ja useammalla käyttäjällä voi olla sama kurssi
   
 - Käyttäjä voi luoda uuden kurssisuorituksen
   - Kurssisuorituksen voi luoda vain sellaiseen kurssiin, jota käyttäjällä ei vielä ole. Kurssisuoritukseen liittyy arvosana.
