@@ -1,8 +1,8 @@
-# MyCourses<h1>
+# MyStudies
 
 Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 
-## Dokumentaatio<h2>
+## Dokumentaatio
 
 [Käyttöohje](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/kaytto-ohje.md)
 
@@ -15,13 +15,13 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 [Testausdokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Testausdokumentti.md)
 
 
-## Releaset<h3>
+## Releaset
 [Releaset](https://github.com/olgaviho/otm-harjoitustyo/releases)
 
 
-## Komentorivitoiminnot<h4>
+## Komentorivitoiminnot
 
-### Testaus<h5>
+### Testaus
 Testit suoritetaan komennolla
 ```
 mvn test
@@ -32,7 +32,7 @@ mvn jacoco:report
 ```
 Kattavuusraporttia voi tarkastella avaamalla tiedoston target/site/jacoco/index.html
 
-### Suoritettavan jarin generointi<h6>
+### Suoritettavan jarin generointi
 
 Komento
 ```
@@ -40,7 +40,7 @@ mvn package
 ```
 generoi jar-tiedoston hakemistoon target mystudies-1.0-SNAPSHOT.jar
 
-### Checkstyle<h7>
+### Checkstyle
 
 Tarkistukset suoritetaan komennolla
 ```
@@ -48,7 +48,7 @@ Tarkistukset suoritetaan komennolla
  ```
 Virheilmoitukset selviävät avaamalla tiedoston target/site/checkstyle.html
 
-### JavaDoc<h8>
+### JavaDoc
 
 JavaDoc generoidaan komennolla
 ```
