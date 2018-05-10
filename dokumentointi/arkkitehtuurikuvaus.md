@@ -76,3 +76,14 @@ Kun kurssin poistonäkymässä on valittu kurssi ja klikataan painiketta deleteC
 (kuva)
 
 Tapahtumankäsittelijä pyytää sovelluslogiikkaa poistamaan metodin _deleteCourse_ avulla uuden kurssin käyttäen courseDaon metodia _deleteCourse_. Mikäli poisto onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
+
+## Rakenteeseen jääneet heikkoudet
+
+käyttöliittymä
+
+Graafinen käyttöliittymä on toteutettu määrittelemällä lähes koko käyttöliittymän struktuuri luokan MyStudiesUi metodissa start. Ainakin kaikkien sovelluksen kuuden päänäkymän rakentava koodi olisi syytä erottaa omiksi metodeikseen. Muuttujien nimentä ei aina ole loogisin mahdollinen.
+
+
+DAO-luokat
+
+DatabaseDao-toteutuksiin on jäänyt toisteista koodia, jonka voisi erottaa omaan luokkaansa.
