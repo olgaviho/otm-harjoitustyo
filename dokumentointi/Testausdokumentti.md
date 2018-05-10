@@ -6,7 +6,7 @@ Ohjelmaa on testattu yksikkö- ja integraatiotesteillä JUnitilla.
 
 ### sovelluslogiikka
 
-Testien ytimen muodostavat sovelluslogiikka eli pakkauksen mystudies.domain luokkaa _MyStudiesService_ testaavat integraatiotestit [MyStudiesServiceTest](https://github.com/olgaviho/otm-harjoitustyo/blob/master/MyStudies/src/test/java/domain/MyStudiesServiceTest.java) joiden määrittelevät testitapaukset muistuttavat käyttöliittymän _MyStudiesService_-olion avulla suorittamaa toiminnallisuutta.
+Testien ytimen muodostavat sovelluslogiikka eli pakkauksen _mystudies.domain_ luokkaa _MyStudiesService_ testaavat integraatiotestit [MyStudiesServiceTest](https://github.com/olgaviho/otm-harjoitustyo/blob/master/MyStudies/src/test/java/domain/MyStudiesServiceTest.java) joiden määrittelevät testitapaukset muistuttavat käyttöliittymän _MyStudiesService_-olion avulla suorittamaa toiminnallisuutta.
 
 ### DAO-luokat
 
