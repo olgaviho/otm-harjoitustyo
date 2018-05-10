@@ -37,12 +37,42 @@ Luokat on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovellukse
 
 Sovelluksen toimintalogiikka muutaman päätoiminnallisuuden osalta sekvenssikaaviona.
 
-(kuva)
+### Käyttäjän kirjautuminen
+
+Kun kirjautumisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja klikataan painiketta loginButton tapahtuu seuraava:
 
 (kuva)
 
-(kuva)
+Tapahtumankäsittelijä kutsuu sovelluslogiikan metodia login antaen parametriksi käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi coursesScenen ja renderöi näkymään kirjautuneen käyttäjän kurssit.
+
+### Uuden käyttäjän luominen
+
+Kun uuden käyttäjän luomisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja käyttäjänimi ja klikataan painiketta createUserButton tapahtuu seuraava:
 
 (kuva)
 
+Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createUser_ avulla uuden käyttäjän käyttäen userDaon metodia _save_. Jos käyttäjätunnus on jo varattu, ei uuden käyttäjän luonti onnistu, josta lähtisi virheilmoitus sovelluslogiikkaan. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi loginScenen.
+
+### Uuden kurssin luominen
+
+Kun uuden kurssin luomisnäkymässä on syötekenttään kirjoitettu id, nimi, kuvaus ja opintopisteet ja klikataan painiketta createCourseButton tapahtuu seuraava:
+
 (kuva)
+
+Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createCourse_ avulla uuden kurssin käyttäen courseDaon metodia _save_. Jos id on jo varattu, ei uuden kurssin luonti onnistu, mistä lähtisi virheilmoitus sovelluslogiikkaan. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
+
+### Uuden kurssinsuorituksen luominen
+
+Kun uuden kurssisuorituksen luomisnäkymässä on syötekentästä valittu kurssi ja kirjoitettu arvosana ja klikataan painiketta createNewCompletedCourseButton tapahtuu seuraava:
+
+(kuva)
+
+Tapahtumankäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko kurssi varmasti olemassa metodin _doesCourseExists_ avulla. Metodi kutsuu courseDaota tarkistamaan onko kurssi olemassa käyttäen metodia _findOne_. Seraavaksi tapahtumakäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko käyttäjällä varmasti tämä kurssi metodin _userHasCourse_ avulla.  Metodi kutsuu coursesAndUserDaota tarkistamaan onko käyttäjällä kurssi olemassa käyttäen metoda _findOne_. Mikäli coursesAndUsersDao palauttaa false ja MyStudiesService true, pyytää käyttöliittymä sovelluslogiikkaa tallentamaan kurssisuorituksen käyttäen metodia _createRelation_. Metodi pyytää CoursesAnsUsersDaota tallentamaan kurssisuorituksen metodilla save. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
+
+### Kurssinsuorituksen poistaminen
+
+Kun kurssin poistonäkymässä on valittu kurssi ja klikataan painiketta deleteCourseButton tapahtuu seuraava:
+
+(kuva)
+
+Tapahtumankäsittelijä pyytää sovelluslogiikkaa poistamaan metodin _deleteCourse_ avulla uuden kurssin käyttäen courseDaon metodia _deleteCourse_. Mikäli poisto onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
