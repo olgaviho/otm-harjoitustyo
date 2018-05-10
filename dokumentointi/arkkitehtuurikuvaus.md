@@ -29,9 +29,9 @@ Luokka- ja pakkauskaavio:
 
 Pakkauksen _myStudies.dao_ luokat _DatabaseCourseDao_, _DatabaseUserDao_ ja _DatabaseCourseUserDao_ huolehtivat tietojen pysyväistallennuksesta tietokantaan. Tietokannan nimi on _mycourses.db_ ja sen sisällä on kolme taulua: users, courses ja usersandcourses. 
 
-Luokkani eivät noudata täysin Data Access Object -suunnittelumallia, joten mikäli tallennustapaa halutaan jossain vaiheessa muokata, pitää myös sovelluslogiikkaan tehdä pieniä muutoksia. Dao-luokat pitäisi eristetää rajapintojen UsersAndCoursesDao, CourseDao ja UserDao taakse, jotta sovelluslogiikka ei käyttäisi niitä suoraan. 
+Luokkani eivät noudata täysin Data Access Object -suunnittelumallia, joten mikäli tallennustapaa halutaan jossain vaiheessa muokata, pitää myös sovelluslogiikkaan tehdä pieniä muutoksia. Dao-luokat pitäisi eristetää rajapintojen _UsersAndCoursesDao_, _CourseDao_ ja _UserDao_ taakse, jotta sovelluslogiikka ei käyttäisi niitä suoraan. 
 
-Luokat on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Luokat on eristetty rajapintojen CourseDao, UsersAndCoursesDao ja UserDao taakse ja sovelluslogiikka ei käytä itse luokkia suoraan.
+Luokat on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Luokat on eristetty rajapintojen _CourseDao_, _UsersAndCoursesDao_ ja _UserDao_ taakse ja sovelluslogiikka ei käytä itse luokkia suoraan.
 
 ## Päätoiminnallisuudet
 
