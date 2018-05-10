@@ -28,7 +28,7 @@ Testikattavuusraportti luodaan komennolla
 ```
 mvn jacoco:report
 ```
-Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto target/site/jacoco/index.html
+Kattavuusraporttia voi tarkastella avaamalla tiedoston target/site/jacoco/index.html
 
 ### Suoritettavan jarin generointi<h6>
 
@@ -44,7 +44,7 @@ Tarkistukset suoritetaan komennolla
 ```
  mvn jxr:jxr checkstyle:checkstyle
  ```
-Virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
+Virheilmoitukset selviävät avaamalla tiedoston target/site/checkstyle.html
 
 ### JavaDoc<h8>
 
@@ -52,6 +52,6 @@ JavaDoc generoidaan komennolla
 ```
 mvn javadoc:javadoc
 ```
-JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/index.html
+JavaDocia voi tarkastella avaamalla selaimella tiedoston target/site/apidocs/index.html
 
 
