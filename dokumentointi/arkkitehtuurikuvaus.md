@@ -3,9 +3,9 @@
 
 ## Käyttöliittymä <h3>
 
-Käyttöliittymä sisältää neljä erilaista näkymää: kirjautuminen, uuden käyttäjän luominen, kurssilistaus ja uuden kurssin luominen.
+Käyttöliittymä sisältää kuusi erilaista näkymää: kirjautuminen, uuden käyttäjän luominen, kurssilistaus, uuden kurssin luominen uuden kurssisuorituksen luominen ja kurssisuorituksen poistaminen.
 
-Jokainen niistä on toteutettu omana Scene-oliona. Käyttöliittymä on rakennettu ohjelmallisesti luokassa mystudies.ui.MyStudies.Ui
+Jokainen niistä on toteutettu omana Scene-oliona. Käyttöliittymä on rakennettu ohjelmallisesti luokassa _mystudies.ui.MyStudies.Ui_
 
 ## Sovelluslogiikka <h3>
 
@@ -19,7 +19,7 @@ Luokka- ja pakkauskaavio:
 
 ## Tietojen pysyväistallennus <h3>
 
-Pakkauksen myStudies.dao luokat DatabaseCourseDao, DatabaseUserDao ja DatabaseCourseUserDao huolehtivat tietojen pysyväistallennuksesta tietokantaan. Tietokannan nimi on mycourses.db ja sen sisällä on kolme taulua: users, courses ja usersandcourses. 
+Pakkauksen _myStudies.dao_ luokat _DatabaseCourseDao_, _DatabaseUserDao_ ja _DatabaseCourseUserDao_ huolehtivat tietojen pysyväistallennuksesta tietokantaan. Tietokannan nimi on _mycourses.db_ ja sen sisällä on kolme taulua: users, courses ja usersandcourses. 
 
 ## Päätoiminnallisuudet <h3>
 
