@@ -4,9 +4,9 @@ Lataa tiedosto mystudies.jar.
 
 ## Ohjelman käynnistäminen <h3>
 Ohjelma käynnistetään komennolla:
-´´´
+```
 java -jar mystudies.jar
-´´´
+```
 
 ## Kirjautuminen <h4>
 Sovellus käynnistyy kirjautumisnäkymään.
