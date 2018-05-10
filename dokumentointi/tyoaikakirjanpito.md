@@ -23,4 +23,5 @@ Päivä | Aika | Mitä tein
 7.5. | 3 h | Sain kurssien valinnat ComboBoxeiksi
 8.5. | 3 h | Testikattavuus saatu melkein 100%
 9.5. | 2,5 h | Checkstyle kuntoon
-Yth. | 54,0 h
+10.5. | 3,5 h | Dokumentit valmiiksi
+Yth. | 57,5 h
