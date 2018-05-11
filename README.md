@@ -38,7 +38,7 @@ Komento
 ```
 mvn package
 ```
-generoi jar-tiedoston hakemistoon target mystudies-1.0-SNAPSHOT.jar
+generoi jar-tiedoston hakemistoon target nimeltä MyStudies-1.0-SNAPSHOT.jar
 
 ### Checkstyle
 
