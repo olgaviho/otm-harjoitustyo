@@ -22,7 +22,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
   - Käyttäjän id:n täytyy olla uniikki ja pituudeltaan vähintään 1 merkki. ID:n tulee sisältää ainoastaan numeroita
-  - Nimi taas voi sisältää myös kirjaimia ja sen pitää olla vähintään kahden merkin mittainen
+  - Nimi taas voi sisältää myös kirjaimia ja sen pitää olla vähintään kolmen merkin mittainen
 
 - Käyttäjä voi kirjautua sovellukseen
   - Kirjautuminen onnistuu, kun syöttää id:n näkymään
