@@ -4,6 +4,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseUserDao;
 import mystudies.domain.User;
@@ -21,6 +22,7 @@ public class DatabaseUserDaoTest {
     
     Database database;
     User user;
+    User user2;
     DatabaseUserDao userDao;
     
     
@@ -32,6 +34,7 @@ public class DatabaseUserDaoTest {
         stmt.execute();        
         userDao = new DatabaseUserDao(database);       
         user = new User(123, "nimi");
+        user2 = new User(124, "nimi");
     }
         
     @Test
@@ -43,6 +46,14 @@ public class DatabaseUserDaoTest {
     public void itIsPossibleToSaveAndFindUsers() throws SQLException {
         userDao.save(user);
         assertEquals("nimi",userDao.findOne(user.getId()).getName());        
+    }
+    
+    @Test
+    public void findAllFindsAllUsers() throws SQLException {
+        userDao.save(user);
+        userDao.save(user2);
+        List<User> twoUsers = userDao.findAll();
+        assertEquals(2,twoUsers.size());        
     }
      
     @After

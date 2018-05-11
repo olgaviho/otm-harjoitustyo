@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 
-public class DatabaseCourseUserDao  {
+public class DatabaseCourseUserDao implements CourseUserDao {
     private final Database database;
     
      /**
@@ -36,6 +36,7 @@ public class DatabaseCourseUserDao  {
      * 
      */
      
+    @Override
     public boolean findOne(Integer userkey, Integer coursekey) throws SQLException {
     
         Connection conn = database.getConnection();               
@@ -61,6 +62,7 @@ public class DatabaseCourseUserDao  {
     * 
     */
     
+    @Override
     public List<Integer> findAllIds(Integer userkey) throws SQLException {
         
         Connection conn = database.getConnection(); 
@@ -91,6 +93,7 @@ public class DatabaseCourseUserDao  {
     * 
     */
     
+    @Override
     public List<Integer> findAllGrades(Integer userkey) throws SQLException {
         Connection conn = database.getConnection(); 
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usersandcourses WHERE userid = ?"); 
@@ -120,6 +123,7 @@ public class DatabaseCourseUserDao  {
     * 
     */
     
+    @Override
     public void save(Integer userkey, Integer courseKey, Integer grade) throws SQLException {
         
         Connection conn = database.getConnection();
@@ -142,6 +146,7 @@ public class DatabaseCourseUserDao  {
     * 
     */
     
+    @Override
     public void deleteCourse(Integer coursekey, Integer userid) throws SQLException {
         
         Connection conn = database.getConnection();
@@ -152,4 +157,5 @@ public class DatabaseCourseUserDao  {
         stmt.close();
         conn.close();
     }   
+
 }

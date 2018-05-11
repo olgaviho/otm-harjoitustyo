@@ -1,12 +1,10 @@
 
 package mystudies.domain;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import mystudies.dao.DatabaseCourseDao;
-import mystudies.dao.DatabaseCourseUserDao;
-import mystudies.dao.DatabaseUserDao;
+import mystudies.dao.CourseUserDao;
+import mystudies.dao.Dao;
+
 
 /**
  * This class handles the logic.
@@ -16,10 +14,10 @@ import mystudies.dao.DatabaseUserDao;
 
 public class MyStudiesService {
     
-    private final DatabaseCourseDao courseDao;
-    private final DatabaseUserDao userDao;
+    private final Dao courseDao;
+    private final Dao userDao;
     private User loggedIn;
-    private final DatabaseCourseUserDao usersAndCourses;
+    private final CourseUserDao usersAndCourses;
     
     /**
      * This creates the service.
@@ -30,7 +28,7 @@ public class MyStudiesService {
      */
 
     
-    public MyStudiesService(DatabaseCourseDao courseDao, DatabaseUserDao userDao, DatabaseCourseUserDao usersAndCourses) {
+    public MyStudiesService(Dao courseDao, Dao userDao, CourseUserDao usersAndCourses) {
         this.userDao = userDao;
         this.courseDao = courseDao;
         this.usersAndCourses = usersAndCourses;
@@ -39,7 +37,7 @@ public class MyStudiesService {
     /**
     * Login to the service.
     * 
-    * @param   id   users's id
+    * @param   id   user's id
     * @return true if user exists, otherwise false
     * 
     */ 
@@ -48,7 +46,7 @@ public class MyStudiesService {
 
         try {
         
-            loggedIn = userDao.findOne(id);       
+            loggedIn = (User) userDao.findOne(id);       
         } catch (Exception e) {            
             return false;
         }
@@ -90,8 +88,14 @@ public class MyStudiesService {
     */ 
     
     public User getLogged() {
+        
+        if (loggedIn == null) {
+            return null;
+        } else {
 
-        return this.loggedIn;
+            return this.loggedIn;
+        
+        }
     }
 
     /**
@@ -162,7 +166,7 @@ public class MyStudiesService {
     public boolean doesCourseExist(int courseid) {
         
         try {            
-            Course course = courseDao.findOne(courseid);        
+            Course course = (Course) courseDao.findOne(courseid);        
             return course != null;
         
         } catch (Exception e) {            
@@ -178,22 +182,22 @@ public class MyStudiesService {
     
     public List<Course> getYourCourses() {
         List<Course> courses = new ArrayList<>();
-        int id = 0;
         
         try {
             
-            id = loggedIn.getId();
+            int id = loggedIn.getId();
             List<Integer> ids = usersAndCourses.findAllIds(id);     
            
             for (Integer courseId : ids) {
-                Course course = courseDao.findOne(courseId);               
+                Course course = (Course) courseDao.findOne(courseId);               
                 courses.add(course);
-            }        
+            }   
+            return courses; 
             
         } catch (Exception e) {
             return null;
         }          
-        return courses;        
+              
     }
     
     /**
@@ -203,14 +207,15 @@ public class MyStudiesService {
     */ 
     
     public List<Course> getAllCourses() {
-        
-        List<Course> allCourses = new ArrayList<>();
+
         try {
-            allCourses = courseDao.findAll();                        
+            List<Course> allCourses = courseDao.findAll();     
+            return allCourses;
+            
         } catch (Exception e) {           
             return null;
         }  
-        return allCourses;
+        
     }
     
      /**
@@ -288,8 +293,8 @@ public class MyStudiesService {
     */ 
     
     public double roundTwoDecimals(double d) {
-        DecimalFormat twoDForm = new DecimalFormat("#.##");
-        return Double.valueOf(twoDForm.format(d));
+        d = Math.floor(100 * d + 0.5) / 100;
+        return d;
     }
 
 }

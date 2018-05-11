@@ -43,11 +43,6 @@ public class DatabaseCourseDaoTest {
         assertEquals("nimi",courseDao.findOne(course.getId()).getName());       
     }
         
-    @Test
-    public void itIsPossibleToDeleteCourses() throws SQLException {
-        courseDao.delete(course.getId());
-        assertEquals(null,courseDao.findOne(123));
-    }
     
     @Test
     public void findAllCoursesFindsAllCourses() throws SQLException {

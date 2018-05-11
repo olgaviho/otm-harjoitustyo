@@ -1,6 +1,8 @@
 
 package mystudies.dao;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import mystudies.domain.User;
 
 /**
@@ -51,7 +53,7 @@ public class DatabaseUserDao implements Dao<User, Integer> {
     }
     
     /**
-    * This method checks if the user already is in the database, then it updates or saves the user.
+    * This method saves the user.
     *
     * @param user the user
     * @throws java.sql.SQLException if there is a problem in the database
@@ -64,9 +66,36 @@ public class DatabaseUserDao implements Dao<User, Integer> {
         String name = user.getName();       
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO users " + "(id, name) " + "VALUES (?, ?)");
         stmt.setInt(1, userId);           
-        stmt.setString(2, name);       
+        stmt.setString(2, name);
         stmt.executeUpdate();
         stmt.close();
         conn.close();  
     } 
+    
+    /**
+    * This method returns a list, where are all users, that are in the database.
+    *
+    * @return users in a list
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
+
+    @Override
+    public List<User> findAll() throws SQLException {
+        List<User> allUsers = new ArrayList<>();        
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {            
+            User user = new User(rs.getInt("id"), rs.getString("name"));
+            allUsers.add(user);
+        }
+            
+        rs.close();
+        stmt.close();        
+        conn.close();        
+        return allUsers; 
+    }
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mystudies.ui;
 
 import java.sql.Connection;
@@ -145,6 +141,7 @@ public class MyStudiesUi extends Application {
         
         createNewUserButton.setOnAction(e-> {
             loginInput.setText("");
+            loginMessage.setText("");
             primaryStage.setScene(newUserScene);   
         }); 
          
@@ -191,13 +188,13 @@ public class MyStudiesUi extends Application {
         createButton.setOnAction(e-> {
             
             int id = 0;
-            boolean mistake = true;
+            boolean idNotValid = true;
             try {
             
                 id = Integer.parseInt(newIdInput.getText());
                 
             } catch (Exception ex) {
-                mistake = false;
+                idNotValid = false;
             }
             
             String name = newNameInput.getText();
@@ -207,7 +204,7 @@ public class MyStudiesUi extends Application {
                 userCreationMessage.setText("Name is too short");
                 userCreationMessage.setTextFill(Color.RED); 
 
-            } else if (!mistake) {
+            } else if (!idNotValid) {
                 userCreationMessage.setText("Id is not valid");
                 userCreationMessage.setTextFill(Color.RED); 
                 
@@ -217,6 +214,8 @@ public class MyStudiesUi extends Application {
                 loginMessage.setText("New user created!");
                 loginMessage.setTextFill(Color.GREEN);                
                 primaryStage.setScene(loginScene);  
+                newNameInput.setText("");
+                newIdInput.setText("");
                 updateMean();
 
             } else {
@@ -240,6 +239,7 @@ public class MyStudiesUi extends Application {
         
         Label courseMessage = new Label();
         
+        
         allCourses = new ArrayList<>();
         userCourses = new ArrayList<>();
         
@@ -250,9 +250,13 @@ public class MyStudiesUi extends Application {
 
         logoutButton.setOnAction(e-> {
             
+            String nimi = myStudiesService.getLogged().getName();
             myStudiesService.logOut();
-            courseMessage.setText("");
+            courseMessage.setText("");    
+            loginMessage.setTextFill(Color.GREEN);  
+            loginMessage.setText("Hope to see you soon " + nimi);
             primaryStage.setScene(loginScene);
+            
         }); 
         
         HBox createForm = new HBox(20);    
@@ -323,12 +327,11 @@ public class MyStudiesUi extends Application {
             
             int id = 0;
             int grade = 0;
-            String idAndCourseName = "";
             boolean exists = true;
             boolean idOrGrdadeIsNotInteger = true;
             try {
             
-                idAndCourseName = allSystemCourses.getValue().toString();
+                String idAndCourseName = allSystemCourses.getValue().toString();
                 String[] parts = idAndCourseName.split(",");
                 String idString = parts[0];                
                 id = Integer.parseInt(idString);             
@@ -342,9 +345,8 @@ public class MyStudiesUi extends Application {
                 completedCourseCreationMessage.setText("Id or grade is not valid");
                 completedCourseCreationMessage.setTextFill(Color.RED); 
 
-            } else if (myStudiesService.doesCourseExist(id)) {
                 
-                if (myStudiesService.userHasCourse(id)) {
+            } else if (myStudiesService.userHasCourse(id)) {
 
                     completedCourseCreationMessage.setText("You already have this course");
                     completedCourseCreationMessage.setTextFill(Color.RED);
@@ -363,11 +365,7 @@ public class MyStudiesUi extends Application {
                     
                 }
 
-            } else {
-                completedCourseCreationMessage.setText("This course does not exist");
-                completedCourseCreationMessage.setTextFill(Color.RED);                 
-            }
-                 
+            
         }); 
         
         returnCoursesButton.setOnAction(e-> {
@@ -522,6 +520,7 @@ public class MyStudiesUi extends Application {
                  
                 updateMean();
                 redrawAllCourses();
+                redrawCourselist();
             
                 primaryStage.setScene(coursesScene);
                     

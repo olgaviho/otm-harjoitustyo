@@ -2,9 +2,10 @@
 package mystudies.dao;
 
 import java.sql.*;
+import java.util.List;
 
 /**
- * This is an interface for all daos.
+ * This is an interface for courseDao and userDao.
  *
  * @author olgaviho
  * @param <T> an object that will be saved 
@@ -24,7 +25,7 @@ public interface Dao<T, K> {
     * 
     */
     
-    T findOne(K key) throws SQLException;
+    T findOne(Integer key) throws SQLException;
     
     /**
     * This method saves the course.
@@ -36,6 +37,17 @@ public interface Dao<T, K> {
     */
     
     void save(T object) throws SQLException;
+    
+    /**
+    * This method returns all the objects in the database.
+    *
+    * @return list of objects
+    * 
+    * @throws java.sql.SQLException if there is a problem in the database
+    * 
+    */
+    
+    List<T> findAll() throws SQLException;
 }
     
     

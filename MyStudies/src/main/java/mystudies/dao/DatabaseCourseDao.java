@@ -18,7 +18,7 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     private Database database;
     
     /**
-     * This creates the course dao.
+     * This creates the course DAO.
      * 
      * @param database database that will used
      */
@@ -72,7 +72,8 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
     * @throws java.sql.SQLException if there is a problem in the database
     * 
     */
-
+    
+    @Override
     public List<Course> findAll() throws SQLException {
         
         List<Course> allCourses = new ArrayList<>();        
@@ -117,21 +118,5 @@ public class DatabaseCourseDao implements Dao<Course, Integer> {
         conn.close();
     }
 
-    /**
-    * This method deletes a course.
-    *
-    * @param key course id
-    * 
-    * @throws java.sql.SQLException if there is a problem in the database
-    * 
-    */
     
-    public void delete(Integer key) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM courses WHERE courseid = ?");
-        stmt.setInt(1, key);
-        stmt.executeUpdate();
-        stmt.close();
-        conn.close();       
-    }
 }

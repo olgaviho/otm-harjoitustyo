@@ -4,6 +4,8 @@ package domain;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import mystudies.dao.CourseUserDao;
+import mystudies.dao.Dao;
 import mystudies.dao.Database;
 import mystudies.dao.DatabaseCourseDao;
 import mystudies.dao.DatabaseCourseUserDao;
@@ -24,8 +26,8 @@ public class MyStudiesServiceTest {
     Database database;
     Database emptyDatabase;
     DatabaseCourseDao courseDao;
-    DatabaseUserDao userDao;
-    DatabaseCourseUserDao usersAndCoursesDao;
+    Dao userDao;
+    CourseUserDao usersAndCoursesDao;
     MyStudiesService service;
     MyStudiesService emptyService;
     
@@ -163,12 +165,12 @@ public class MyStudiesServiceTest {
     }
     
     @Test
-    public void getMeanReturnsNullIfThereIsNoLoggedIn() {
+    public void getMeanReturns0IfThereIsNoLoggedIn() {
         assertEquals(Double.toString(0.0), Double.toString(service.getMean()));
     }
     
     @Test
-    public void getMeanReturnsNullIfLoggedInHas0Courses() {
+    public void getMeanReturns0IfLoggedInHasZeroCourses() {
         service.createUser(7, "tester4");
         service.login(7);
         assertEquals(Double.toString(0.0), Double.toString(service.getMean()));
