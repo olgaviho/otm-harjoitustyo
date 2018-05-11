@@ -12,7 +12,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali käyttäjä_.
 
 Sovellus koostuu viidestä eri näkymästä
 
-![alt text](osoite uuteen kuvaan)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/uudeN%C3%A4kym%C3%A4t.JPG)
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän kurssilistaukseen.
 
@@ -26,7 +26,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - Käyttäjä voi kirjautua sovellukseen
   - Kirjautuminen onnistuu, kun syöttää id:n näkymään
-  - Jos käyttäjää ei olemassa järjestelmässä, pitäisi siitä tulee ilmoitus
+  - Jos käyttäjää ei olemassa järjestelmässä, pitäisi siitä tulla ilmoitus
 
 ### Kirjautumisen jälkeen
 
