@@ -34,6 +34,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - Käyttäjä voi luoda uuden kurssin
   - Luodulla kurssilla tulee olla uniikki id ja useammalla käyttäjällä voi olla sama kurssi
+  - id:n ja opintopisteiden lukumäärän tulee sisältää vain numeroita ja nimen tulee olla vähintään 3 merkkiä pitkä
   
 - Käyttäjä voi luoda uuden kurssisuorituksen
   - Kurssisuorituksen voi luoda vain sellaiseen kurssiin, jota käyttäjällä ei vielä ole. Kurssisuoritukseen liittyy arvosana.
