@@ -22,9 +22,11 @@ Onnistuneen kirjautumisen jälkeen siirrytään listaukseen, jossa näkyvät kai
 
 Klikkaamalla painiketta _logout_ käyttäjä pääsee takaisin kirjautumisnäkymään.
 
-Klikkaamalla painiketta _create new course_ käyttäjä pääsee takaisin kurssinluomisnäkymään.
+Klikkaamalla painiketta _create new course_ käyttäjä pääsee kurssinluomisnäkymään.
 
 Klikkaamalla painiketta _create new completed course_ käyttäjä pääsee luomaan uuden kurssisuorituksen.
+
+Klikkaamalla painiketta _delete course_ käyttäjä pääsee kurssinpoistonäkymään.
 
 ## Uuden kurssin luominen <h7>
 Uusi kurssi on mahdollista luoda syöttämällä pyydetyt tiedot kenttiin ja painamalla _create_. Jos kurssin luominen onnistuu palataan kurssilistaukseen. 
