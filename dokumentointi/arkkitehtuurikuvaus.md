@@ -67,7 +67,7 @@ Kun uuden kurssisuorituksen luomisnäkymässä on syötekentästä valittu kurss
 
 ![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createNewCompletedCourseSekvenssikaavio.JPG)
 
-Tapahtumankäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko kurssi varmasti olemassa metodin _doesCourseExists_ avulla. Metodi kutsuu courseDaota tarkistamaan onko kurssi olemassa käyttäen metodia _findOne_. Seraavaksi tapahtumakäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko käyttäjällä varmasti tämä kurssi metodin _userHasCourse_ avulla.  Metodi kutsuu coursesAndUserDaota tarkistamaan onko käyttäjällä kurssi olemassa käyttäen metoda _findOne_. Mikäli coursesAndUsersDao palauttaa false ja MyStudiesService true, pyytää käyttöliittymä sovelluslogiikkaa tallentamaan kurssisuorituksen käyttäen metodia _createRelation_. Metodi pyytää CoursesAnsUsersDaota tallentamaan kurssisuorituksen metodilla save. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
+Tapahtumakäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko käyttäjällä varmasti tämä kurssi metodin _userHasCourse_ avulla.  Metodi kutsuu coursesAndUserDaota tarkistamaan onko käyttäjällä kurssi olemassa käyttäen metoda _findOne_. Mikäli coursesAndUsersDao palauttaa false ja MyStudiesService true, pyytää käyttöliittymä sovelluslogiikkaa tallentamaan kurssisuorituksen käyttäen metodia _createRelation_. Metodi pyytää CoursesAnsUsersDaota tallentamaan kurssisuorituksen metodilla save. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
 
 ### Kurssinsuorituksen poistaminen
 
