@@ -144,8 +144,7 @@ public class MyStudiesUi extends Application {
             loginMessage.setText("");
             primaryStage.setScene(newUserScene);   
         }); 
-         
-        
+                 
        
         loginPane.getChildren().addAll(loginMessage, loginButton, inputPane, createNewUserButton);       
         
@@ -363,9 +362,7 @@ public class MyStudiesUi extends Application {
                     newCourseGradeInput.setText("");
                     primaryStage.setScene(coursesScene);
                     
-                }
-
-            
+                }           
         }); 
         
         returnCoursesButton.setOnAction(e-> {
