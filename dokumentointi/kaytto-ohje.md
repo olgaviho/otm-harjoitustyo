@@ -1,11 +1,11 @@
 # Käyttöohje <h1>
 
-Lataa tiedosto mystudies.jar.
+Lataa tiedosto [MyStudies7.jar](https://github.com/olgaviho/otm-harjoitustyo/releases).
 
 ## Ohjelman käynnistäminen <h3>
 Ohjelma käynnistetään komennolla:
 ```
-java -jar mystudies.jar
+java -jar MyStudies7.jar
 ```
 
 ## Kirjautuminen <h4>
