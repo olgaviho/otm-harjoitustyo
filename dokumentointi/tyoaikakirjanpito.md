@@ -24,4 +24,5 @@ Päivä | Aika | Mitä tein
 8.5. | 3 h | Testikattavuus saatu melkein 100%
 9.5. | 2,5 h | Checkstyle kuntoon
 10.5. | 3,5 h | Dokumentit valmiiksi
-Yth. | 57,5 h
+11.5. | 2,5 h | Viimeinen hionta valmiiksi
+Yth. | 60,0 h
