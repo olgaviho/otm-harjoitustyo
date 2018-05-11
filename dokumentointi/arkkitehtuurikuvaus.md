@@ -5,7 +5,7 @@
 
 Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria:
 
-![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/pakkausrakenne.JPG, width="450)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/pakkausrakenne.JPG, width="450")
 
 Pakkaus _mystudies.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _mystudies.domain_ sovelluslogiikan ja _mystudies.dao_ tietojen pysyväistallennuksesta vastaavan koodin.
 
