@@ -25,4 +25,4 @@ Päivä | Aika | Mitä tein
 9.5. | 2,5 h | Checkstyle kuntoon
 10.5. | 3,5 h | Dokumentit valmiiksi
 11.5. | 2,5 h | Viimeinen hionta valmiiksi
-Yth. | 60,0 h
+Yht. | 60,0 h
