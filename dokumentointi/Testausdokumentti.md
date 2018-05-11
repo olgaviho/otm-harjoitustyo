@@ -14,7 +14,9 @@ Kaikkien DAO-luokkien toiminnallisuus on testattu luomalla testeissä testitieto
 
 ### Testauskattavuus
 
-Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 100% ja haarautumakattavuus 96%
+Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on ja haarautumakattavuus ovat hyvällä tasolla.
+
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/testikattavuus2.png)
 
 Testaamatta jäivät tilanteet, joissa tietokantaa tai tarvittavia tauluja ei ole olemassa.
 
