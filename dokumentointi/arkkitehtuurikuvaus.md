@@ -23,7 +23,7 @@ Toiminnallisesta kokonaisuudesta vastaa luokan myStudiesService ainoa olio.
 
 Luokka- ja pakkauskaavio:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/rakenne.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/rakenne.JPG)
 
 ## Tietojen pysyväistallennus
 
@@ -41,7 +41,7 @@ Sovelluksen toimintalogiikka muutaman päätoiminnallisuuden osalta sekvenssikaa
 
 Kun kirjautumisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja klikataan painiketta loginButton tapahtuu seuraava:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/loginSekvenssi.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/loginSekvenssi.JPG)
 
 Tapahtumankäsittelijä kutsuu sovelluslogiikan metodia login antaen parametriksi käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi coursesScenen ja renderöi näkymään kirjautuneen käyttäjän kurssit.
 
@@ -49,7 +49,7 @@ Tapahtumankäsittelijä kutsuu sovelluslogiikan metodia login antaen parametriks
 
 Kun uuden käyttäjän luomisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja käyttäjänimi ja klikataan painiketta createUserButton tapahtuu seuraava:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createUserSekvenssi.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createUserSekvenssi.JPG)
 
 Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createUser_ avulla uuden käyttäjän käyttäen userDaon metodia _save_. Jos käyttäjätunnus on jo varattu, ei uuden käyttäjän luonti onnistu, josta lähtisi virheilmoitus sovelluslogiikkaan. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi loginScenen.
 
@@ -57,7 +57,7 @@ Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createUser_ 
 
 Kun uuden kurssin luomisnäkymässä on syötekenttään kirjoitettu id, nimi, kuvaus ja opintopisteet ja klikataan painiketta createCourseButton tapahtuu seuraava:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createCourseSekvenssi.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createCourseSekvenssi.JPG)
 
 Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createCourse_ avulla uuden kurssin käyttäen courseDaon metodia _save_. Jos id on jo varattu, ei uuden kurssin luonti onnistu, mistä lähtisi virheilmoitus sovelluslogiikkaan. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
 
@@ -65,7 +65,7 @@ Tapahtumankäsittelijä pyytää sovelluslogiikkaa luomaan metodin _createCourse
 
 Kun uuden kurssisuorituksen luomisnäkymässä on syötekentästä valittu kurssi ja kirjoitettu arvosana ja klikataan painiketta createNewCompletedCourseButton tapahtuu seuraava:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createNewCompletedCourseSekvenssikaavio.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/createNewCompletedCourseSekvenssikaavio.JPG)
 
 Tapahtumankäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko kurssi varmasti olemassa metodin _doesCourseExists_ avulla. Metodi kutsuu courseDaota tarkistamaan onko kurssi olemassa käyttäen metodia _findOne_. Seraavaksi tapahtumakäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko käyttäjällä varmasti tämä kurssi metodin _userHasCourse_ avulla.  Metodi kutsuu coursesAndUserDaota tarkistamaan onko käyttäjällä kurssi olemassa käyttäen metoda _findOne_. Mikäli coursesAndUsersDao palauttaa false ja MyStudiesService true, pyytää käyttöliittymä sovelluslogiikkaa tallentamaan kurssisuorituksen käyttäen metodia _createRelation_. Metodi pyytää CoursesAnsUsersDaota tallentamaan kurssisuorituksen metodilla save. Mikäli taas luonti onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
 
@@ -73,7 +73,7 @@ Tapahtumankäsittelijä pyytää sovelluslogiikkaa tarkistamaan, onko kurssi var
 
 Kun kurssin poistonäkymässä on valittu kurssi ja klikataan painiketta deleteCourseButton tapahtuu seuraava:
 
-[alt-text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/deletesekvenssi.JPG)
+![alt text](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Kuvat/deletesekvenssi.JPG)
 
 Tapahtumankäsittelijä pyytää sovelluslogiikkaa poistamaan metodin _deleteCourse_ avulla uuden kurssin käyttäen courseDaon metodia _deleteCourse_. Mikäli poisto onnistuu, käyttöliittymä vaihtaa näkymäksi coursesScenen.
 
