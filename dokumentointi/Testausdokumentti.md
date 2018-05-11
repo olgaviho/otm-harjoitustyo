@@ -26,4 +26,4 @@ Sovellusta on testattu ainoastaan Linux- ympäristössä. Sovellus on ladattu ko
 
 ### Toiminnallisuudet
 
-Kaikki [määrittelydokumentin](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/maarittelydokumentti.md) perusversion tarjoamaa toiminnallisuutta ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä tai pelkillä kirjainyhdistelmillä.
+Kaikki [vaatimusmäärittelyn](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittelu.md) perusversion tarjoamaa toiminnallisuutta ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on syötekentät yritetty täyttää myös virheellisillä arvoilla kuten tyhjillä tai pelkillä kirjainyhdistelmillä.
