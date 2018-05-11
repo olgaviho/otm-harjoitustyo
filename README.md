@@ -15,7 +15,7 @@ Sovelluksen avulla voi seurata omien opintojensa edistymistä yliopistossa.
 [Testausdokumentti](https://github.com/olgaviho/otm-harjoitustyo/blob/master/dokumentointi/Testausdokumentti.md)
 
 
-## Releaset
+## Loppupalautus
 [Releaset](https://github.com/olgaviho/otm-harjoitustyo/releases)
 
 
